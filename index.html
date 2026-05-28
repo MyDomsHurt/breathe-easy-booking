@@ -180,6 +180,17 @@
     </div>
   </header>
 
+  <!-- Mobile Sticky Price Bar (appears when scrolling into booking area) -->
+  <div id="mobile-sticky-price" 
+       class="hidden fixed top-0 left-0 right-0 z-[60] bg-white border-b border-[#E5E7EB] shadow-sm transition-all duration-200 lg:hidden">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="text-sm font-medium text-[#475569]">Your quote</div>
+      <div class="text-lg font-semibold tabular-nums text-[#1F4088]" id="mobile-sticky-total">
+        HK$ 1,200
+      </div>
+    </div>
+  </div>
+
   <!-- Hero -->
   <div id="hero" class="pt-20 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-8 pt-12 pb-16">
@@ -1197,6 +1208,54 @@
       })
       
       console.log('%c[Breathe Easy] Premium booking page initialized successfully.', 'color:#94A3B8')
+
+      // Initialize mobile sticky price bar
+      initMobileStickyPrice();
+    }
+
+    function initMobileStickyPrice() {
+      const stickyBar = document.getElementById('mobile-sticky-price');
+      const bookingSection = document.getElementById('booking-section');
+      const mainPrice = document.getElementById('summary-price');
+      const stickyTotal = document.getElementById('mobile-sticky-total');
+
+      if (!stickyBar || !bookingSection || !mainPrice || !stickyTotal) return;
+
+      // Sync the price initially and on changes
+      const syncPrice = () => {
+        stickyTotal.textContent = mainPrice.textContent;
+      };
+
+      // Initial sync
+      syncPrice();
+
+      // Watch for changes to the main price (simple mutation observer)
+      const observer = new MutationObserver(syncPrice);
+      observer.observe(mainPrice, { childList: true, characterData: true, subtree: true });
+
+      // Show sticky bar when booking section enters viewport
+      const observerOptions = {
+        root: null,
+        rootMargin: '-80px 0px 0px 0px', // Trigger a bit after the section starts
+        threshold: 0.1
+      };
+
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            stickyBar.classList.remove('hidden');
+            stickyBar.classList.add('flex');
+          } else {
+            // Only hide if user scrolls way above
+            if (entry.boundingClientRect.top > 0) {
+              stickyBar.classList.remove('flex');
+              stickyBar.classList.add('hidden');
+            }
+          }
+        });
+      }, observerOptions);
+
+      sectionObserver.observe(bookingSection);
     }
     
     // ==================== LANGUAGE SWITCHER ====================
