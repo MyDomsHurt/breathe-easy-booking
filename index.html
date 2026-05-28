@@ -410,6 +410,18 @@
               <span class="font-medium text-[#1F2937]">Total units selected:</span> 
               <span class="font-semibold tabular-nums" id="total-units-display">0</span>
             </div>
+
+            <!-- Compact live quote - shown right after units on mobile for constant visibility while selecting -->
+            <div id="mobile-compact-quote" class="lg:hidden mt-4 p-4 rounded-2xl border border-[#E5E7EB] bg-[#FAFBFC] sticky top-28 z-10">
+              <div class="flex items-baseline justify-between">
+                <div class="text-xs font-semibold tracking-wide" style="color:#1F4088;">YOUR QUOTE</div>
+                <div id="mobile-compact-total" class="text-2xl font-semibold tabular-nums tracking-tighter text-[#1F4088]">HK$ 1,200</div>
+              </div>
+
+              <div id="mobile-compact-lines" class="mt-2 space-y-px text-[12px] text-[#475569]"></div>
+
+              <div id="mobile-compact-notes" class="mt-2 text-[10px] leading-tight"></div>
+            </div>
           </div>
 
           <!-- Time Window -->
@@ -820,12 +832,67 @@
       calculateTotals()
       updateSummary()
       updateTotalUnitsDisplay()
+      updateMobileCompactQuote()
     }
 
     // Update the total units display
     function updateTotalUnitsDisplay() {
       const el = document.getElementById('total-units-display')
       if (el) el.textContent = totalUnits
+    }
+
+    // Compact live quote shown directly after the unit +/- controls on mobile.
+    // Keeps the pricing highly visible while the user is actively choosing quantities.
+    function updateMobileCompactQuote() {
+      const container = document.getElementById('mobile-compact-quote')
+      if (!container) return
+
+      const totalEl = document.getElementById('mobile-compact-total')
+      const linesEl = document.getElementById('mobile-compact-lines')
+      const notesEl = document.getElementById('mobile-compact-notes')
+
+      // Always show the current final total
+      if (totalEl) {
+        totalEl.textContent = `HK$ ${finalTotal.toLocaleString()}`
+      }
+
+      const typeInfo = {
+        split:       { label: 'Split',       price: UNIT_PRICES.split },
+        window:      { label: 'Window',      price: UNIT_PRICES.window },
+        cassette:    { label: 'Cassette',    price: UNIT_PRICES.cassette },
+        builtin:     { label: 'Built-in',    price: UNIT_PRICES.builtin },
+        underceiling:{ label: 'Under-Ceiling', price: UNIT_PRICES.underceiling }
+      }
+
+      let linesHTML = ''
+      let hasUnits = false
+
+      Object.keys(unitQuantities).forEach(key => {
+        const qty = unitQuantities[key]
+        if (qty > 0) {
+          hasUnits = true
+          const info = typeInfo[key]
+          const lineTotal = qty * info.price
+          linesHTML += `
+            <div class="flex justify-between">
+              <span>${qty} × ${info.label}</span>
+              <span class="font-medium">HK$ ${lineTotal.toLocaleString()}</span>
+            </div>
+          `
+        }
+      })
+
+      if (linesEl) linesEl.innerHTML = linesHTML || '<div class="text-[#64748B]">No units selected yet</div>'
+
+      // Compact notes for discount or minimum
+      let notesHTML = ''
+      if (discountRate > 0) {
+        notesHTML = `<span class="text-emerald-600">−${discountRate}% volume discount applied</span>`
+      } else if (minimumApplied) {
+        notesHTML = `<span class="text-amber-600">Minimum charge applies</span>`
+      }
+
+      if (notesEl) notesEl.innerHTML = notesHTML
     }
 
     // (Old unit cards removed - now using per-type quantity selectors)
@@ -1195,6 +1262,7 @@
       // Initial summary
       setTimeout(() => {
         updateSummary()
+        updateMobileCompactQuote()
       }, 50)
       
       // Keyboard escape for modal
@@ -1209,9 +1277,6 @@
 
       // Initialize mobile sticky price bar
       initMobileStickyPrice();
-
-      // On mobile, bring the full detailed quote summary up next to the unit selectors
-      repositionSummaryForMobile();
     }
 
     function initMobileStickyPrice() {
@@ -1302,35 +1367,8 @@
       });
     }
 
-    // Mobile UX: Move the full quote summary card to sit right after the unit selectors.
-    // This way on phones, while tapping +/- to choose units, the complete live breakdown
-    // (lines, discounts, minimum, total) is always visible immediately below.
-    function repositionSummaryForMobile() {
-      if (window.innerWidth >= 1024) return; // Desktop keeps the original two-column layout
-
-      const grid = document.querySelector('#booking-section > div.grid');
-      if (!grid) return;
-
-      const summaryCol = grid.querySelector(':scope > div.lg\\:col-span-5');
-      const unitsSection = document.getElementById('total-units-display');
-      if (!summaryCol || !unitsSection) return;
-
-      const insertAfter = unitsSection.closest('div.mt-2\\.5') || unitsSection;
-      if (!insertAfter.parentNode) return;
-
-      // Move the summary card to right after the unit quantity controls
-      insertAfter.parentNode.insertBefore(summaryCol, insertAfter.nextSibling);
-
-      // Clean up desktop-only classes for the new mobile position
-      summaryCol.classList.remove('lg:col-span-5', 'mt-10', 'lg:mt-0');
-      summaryCol.classList.add('mt-6', 'mb-8', 'w-full');
-
-      // Remove sticky behavior (not needed when it's inline in the flow on mobile)
-      const stickyInner = summaryCol.querySelector('.lg\\:sticky');
-      if (stickyInner) {
-        stickyInner.classList.remove('lg:sticky', 'lg:top-24');
-      }
-    }
+    // (Old big-card moving logic removed — replaced by the compact
+    // mobile unit quote that stays right after the +/- controls)
     
     // ==================== LANGUAGE SWITCHER ====================
     const translations = {
