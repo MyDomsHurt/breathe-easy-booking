@@ -180,12 +180,12 @@
     </div>
   </header>
 
-  <!-- Mobile Sticky Price Bar (appears when scrolling into booking area) -->
+  <!-- Mobile Sticky Price Bar (clings under header on mobile when in booking area) -->
   <div id="mobile-sticky-price" 
-       class="hidden fixed top-0 left-0 right-0 z-[60] bg-white border-b border-[#E5E7EB] shadow-sm transition-all duration-200 lg:hidden">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="text-sm font-medium text-[#475569]">Your quote</div>
-      <div class="text-lg font-semibold tabular-nums text-[#1F4088]" id="mobile-sticky-total">
+       class="hidden fixed top-20 left-0 right-0 z-[60] bg-white border-b border-[#E5E7EB] shadow-md transition-all duration-200 lg:hidden">
+    <div class="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between">
+      <div class="text-sm font-semibold text-[#1F4088]">Your quote</div>
+      <div class="text-xl font-semibold tabular-nums tracking-tighter text-[#1F4088]" id="mobile-sticky-total">
         HK$ 1,200
       </div>
     </div>
@@ -976,6 +976,9 @@
         `
         document.getElementById('cost-breakdown').style.display = 'block'
       }
+
+      // Notify any listeners (mobile sticky bar, etc.) that the price changed
+      document.dispatchEvent(new CustomEvent('price-updated'));
     }
 
     // Real-time summary updates
@@ -1221,41 +1224,84 @@
 
       if (!stickyBar || !bookingSection || !mainPrice || !stickyTotal) return;
 
-      // Sync the price initially and on changes
+      let isVisible = false;
+
+      // Robust price sync: extracts the final total even when the main price contains
+      // the discount HTML structure (struck-through original + discounted amount)
       const syncPrice = () => {
-        stickyTotal.textContent = mainPrice.textContent;
+        const raw = mainPrice.textContent || mainPrice.innerText || '';
+        // Find the last HK$ amount in the text (the final total after any discount)
+        const matches = raw.match(/HK\$\s*[\d,]+/g);
+        if (matches && matches.length > 0) {
+          stickyTotal.textContent = matches[matches.length - 1];
+        } else {
+          stickyTotal.textContent = raw.trim() || 'HK$ 1,200';
+        }
       };
 
       // Initial sync
       syncPrice();
 
-      // Watch for changes to the main price (simple mutation observer)
+      // Watch for any DOM changes inside the price element (handles both textContent and innerHTML updates)
       const observer = new MutationObserver(syncPrice);
       observer.observe(mainPrice, { childList: true, characterData: true, subtree: true });
 
-      // Show sticky bar when booking section enters viewport
-      const observerOptions = {
-        root: null,
-        rootMargin: '-80px 0px 0px 0px', // Trigger a bit after the section starts
-        threshold: 0.1
+      // Also listen to our own updateSummary calls as a safety net
+      document.addEventListener('price-updated', syncPrice);
+
+      // Reliable scroll-based visibility (more predictable than IntersectionObserver on mobile)
+      let ticking = false;
+
+      const updateStickyVisibility = () => {
+        const headerHeight = 80; // matches h-20 header
+        const rect = bookingSection.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+
+        // Show the sticky bar when:
+        // - The booking section has scrolled up so its top is at or above the header
+        // - AND the booking section hasn't completely scrolled past the top of the screen
+        const sectionTopHasPassedHeader = rect.top <= headerHeight;
+        const sectionBottomIsStillBelowTop = rect.bottom > headerHeight;
+
+        const shouldShow = sectionTopHasPassedHeader && sectionBottomIsStillBelowTop;
+
+        if (shouldShow && !isVisible) {
+          stickyBar.classList.remove('hidden');
+          stickyBar.classList.add('flex');
+          isVisible = true;
+        } else if (!shouldShow && isVisible) {
+          stickyBar.classList.remove('flex');
+          stickyBar.classList.add('hidden');
+          isVisible = false;
+        }
       };
 
-      const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            stickyBar.classList.remove('hidden');
-            stickyBar.classList.add('flex');
-          } else {
-            // Only hide if user scrolls way above
-            if (entry.boundingClientRect.top > 0) {
-              stickyBar.classList.remove('flex');
-              stickyBar.classList.add('hidden');
-            }
-          }
-        });
-      }, observerOptions);
+      const onScroll = () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            updateStickyVisibility();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
 
-      sectionObserver.observe(bookingSection);
+      // Attach listeners
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+
+      // Run once after everything settles (important for initial load position)
+      setTimeout(() => {
+        updateStickyVisibility();
+        syncPrice();
+      }, 120);
+
+      // Also re-check when the user clicks into the booking area via the CTA buttons
+      document.querySelectorAll('[onclick*="booking-section"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          setTimeout(updateStickyVisibility, 650);
+        });
+      });
     }
     
     // ==================== LANGUAGE SWITCHER ====================
