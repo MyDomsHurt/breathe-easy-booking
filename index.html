@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Cleaning • Breathe Easy HK</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:wght@600&amp;display=swap');
+    
+    :root {
+      --deep-blue: #1F4088;
+      --accent-cyan: #68C8F0;
+      --light-sky: #C4EAFF;
+      --bg: #FAFBFC;
+    }
+    
+    body {
+      font-family: 'Inter', system_ui, -apple-system, sans-serif;
+    }
+    
+    .heading-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .premium-shadow {
+      box-shadow: 0 10px 30px -15px rgb(31 64 136 / 0.12),
+                  0 4px 6px -1px rgb(0 0 0 / 0.05);
+    }
+
+    .section-header {
+      letter-spacing: -0.025em;
+    }
+
+    .nav-link {
+      transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-link:hover {
+      color: #1F4088;
+    }
+
+    .form-input {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      background-color: white;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: #68C8F0;
+      box-shadow: 0 0 0 4px rgba(104, 200, 240, 0.12);
+    }
+
+    .unit-card {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid #E5E7EB;
+    }
+    .unit-card:hover {
+      border-color: #C4EAFF;
+    }
+    .unit-card.active {
+      border-color: #1F4088;
+      background-color: #F8FBFF;
+      box-shadow: 0 0 0 1px #1F4088;
+    }
+
+    .time-pill {
+      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid #E5E7EB;
+    }
+    .time-pill:hover {
+      border-color: #C4EAFF;
+    }
+    .time-pill.active {
+      background-color: #1F4088;
+      color: white;
+      border-color: #1F4088;
+    }
+
+    .booking-summary {
+      background: linear-gradient(145deg, #ffffff 0%, #F8FBFF 100%);
+    }
+
+    .sophisticated-btn {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      letter-spacing: -0.01em;
+    }
+    .sophisticated-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 15px -3px rgb(31 64 136 / 0.15), 0 4px 6px -4px rgb(31 64 136 / 0.15);
+    }
+
+    .subtle-divider {
+      background: linear-gradient(to right, transparent, #E5E7EB, transparent);
+    }
+
+    .trust-badge {
+      transition: transform 0.2s ease;
+    }
+    .trust-badge:hover {
+      transform: translateY(-1px);
+    }
+
+    .modal {
+      animation: modalEnter 0.2s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    @keyframes modalEnter {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .minimal-input {
+      font-size: 15px;
+      padding-top: 14px;
+      padding-bottom: 14px;
+    }
+
+    .brand-gradient {
+      background: linear-gradient(135deg, #1F4088 0%, #2A5290 100%);
+    }
+  </style>
+</head>
+<body class="bg-[#FAFBFC] text-[#1F2937] antialiased">
+  
+  <!-- Elegant Fixed Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-b border-[#E5E7EB]">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <img src="assets/logo.svg" alt="Breathe Easy" class="h-9 w-auto">
+        </div>
+
+        <!-- Nav -->
+        <nav class="hidden md:flex items-center gap-x-9 text-sm font-medium">
+          <a href="#how" class="nav-link text-[#475569] hover:text-[#1F4088]">How it works</a>
+          <a href="#guarantees" class="nav-link text-[#475569] hover:text-[#1F4088]">Our promise</a>
+          <a href="#reviews" class="nav-link text-[#475569] hover:text-[#1F4088]">Reviews</a>
+        </nav>
+
+        <!-- Right side -->
+        <div class="flex items-center gap-x-4">
+          <a href="https://wa.me/85298877273" target="_blank" 
+             class="hidden sm:flex items-center gap-x-2 text-sm font-medium px-4 py-2 rounded-full border border-[#E5E7EB] hover:border-[#1F4088] transition-colors">
+            <i class="fa-brands fa-whatsapp text-[#25D366]"></i>
+            <span class="text-[#475569]">+852 9887 7273</span>
+          </a>
+          
+          <button onclick="document.getElementById('booking-section').scrollIntoView({ behavior: 'smooth', block: 'start' })" 
+                  class="sophisticated-btn px-6 py-2.5 rounded-full text-sm font-semibold text-white shadow-sm"
+                  style="background-color: #1F4088;">
+            Book now
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="pt-20 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-8 pt-12 pb-16">
+      <div class="grid lg:grid-cols-12 gap-x-12 items-center">
+        
+        <!-- Left content -->
+        <div class="lg:col-span-7 max-w-2xl">
+          <div class="inline-flex items-center gap-x-2 bg-white px-4 py-1.5 rounded-full border border-[#E5E7EB] mb-6">
+            <div class="w-2 h-2 rounded-full" style="background-color: #68C8F0;"></div>
+            <span class="text-xs font-semibold tracking-[0.5px] text-[#475569]">5.0 • 460+ REVIEWS ON GOOGLE</span>
+          </div>
+
+          <h1 class="text-[56px] leading-[1.05] font-semibold tracking-[-0.04em] section-header" style="color: #1F2937;">
+            Book your<br>aircon cleaning.
+          </h1>
+          <p class="mt-5 text-xl text-[#475569] max-w-lg">
+            Professional aircon cleaning.<br>
+            Non-toxic. No mess left behind. Book in advance, especially during peak season.
+          </p>
+
+          <div class="mt-8 flex items-center gap-x-4">
+            <button onclick="document.getElementById('booking-section').scrollIntoView({ behavior: 'smooth', block: 'start' })" 
+                    class="sophisticated-btn inline-flex items-center justify-center px-9 py-4 rounded-2xl text-[15px] font-semibold text-white shadow-sm"
+                    style="background-color: #1F4088;">
+              Schedule your cleaning
+            </button>
+            
+            <a href="#how" 
+               class="inline-flex items-center gap-x-3 px-6 py-4 text-sm font-medium text-[#475569] hover:text-[#1F4088] transition-colors">
+              <span>See how it works</span>
+              <i class="fa-solid fa-arrow-down text-xs"></i>
+            </a>
+          </div>
+
+          <div class="mt-8 flex items-center gap-x-6 text-sm">
+            <div class="flex -space-x-2">
+              <div class="w-7 h-7 rounded-full border-2 border-white overflow-hidden ring-1 ring-[#E5E7EB]"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=28&h=28&fit=crop&crop=face" class="object-cover"></div>
+              <div class="w-7 h-7 rounded-full border-2 border-white overflow-hidden ring-1 ring-[#E5E7EB]"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=28&h=28&fit=crop&crop=face" class="object-cover"></div>
+              <div class="w-7 h-7 rounded-full border-2 border-white overflow-hidden ring-1 ring-[#E5E7EB]"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=28&h=28&fit=crop&crop=face" class="object-cover"></div>
+            </div>
+            <div class="text-[#64748B] text-sm">
+              Trusted by <span class="font-medium text-[#1F2937]">thousands of families</span> across Hong Kong
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero image -->
+        <div class="lg:col-span-5 mt-10 lg:mt-0">
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/5">
+            <img src="assets/team-photo.jpg" alt="Breathe Easy team - professional aircon cleaning in Hong Kong homes" 
+                 class="w-full aspect-[16/11] object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/15 to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <div class="inline-flex items-center gap-x-2 bg-white/95 backdrop-blur-md px-4 py-2 rounded-2xl text-sm shadow-sm">
+                <i class="fa-solid fa-check text-[#1F4088]"></i>
+                <span class="font-medium text-[#1F2937]">Book in advance for best availability</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust Bar -->
+  <div class="border-y border-[#E5E7EB] bg-white py-5">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-4 text-center">
+        <div class="flex items-center justify-center gap-x-3">
+          <div class="text-[#1F4088]">
+            <i class="fa-solid fa-shield-halved text-xl"></i>
+          </div>
+          <div class="text-left">
+            <div class="font-semibold text-sm">Non-toxic &amp; safe</div>
+            <div class="text-xs text-[#64748B]">Family &amp; pet friendly</div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-x-3">
+          <div class="text-[#1F4088]">
+            <i class="fa-solid fa-broom text-xl"></i>
+          </div>
+          <div class="text-left">
+            <div class="font-semibold text-sm">Zero mess guarantee</div>
+            <div class="text-xs text-[#64748B]">We leave your home spotless</div>
+          </div>
+        </div>
+        <div class="flex items-center justify-center gap-x-3">
+          <div class="flex items-center text-[#1F4088]">
+            <i class="fa-solid fa-star text-lg mr-1"></i>
+            <span class="font-semibold text-lg leading-none mt-0.5">5.0</span>
+          </div>
+          <div class="text-left">
+            <div class="font-semibold text-sm">460+ Google reviews</div>
+            <div class="text-xs text-[#64748B]">Hong Kong’s most trusted</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOKING SECTION -->
+  <div id="booking-section" class="max-w-7xl mx-auto px-8 pt-8 pb-20">
+    <div class="grid lg:grid-cols-12 gap-x-8">
+      
+      <!-- Form Column -->
+      <div class="lg:col-span-7">
+        <div class="mb-8">
+          <!-- Progress Stepper (proven high-converter pattern) -->
+          <div class="flex items-center gap-x-2 text-xs font-semibold tracking-widest mb-3">
+            <div class="flex items-center gap-x-1.5">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold" style="background-color: #1F4088; color: white;">1</div>
+              <span class="text-[#1F4088]">SERVICE</span>
+            </div>
+            <div class="w-4 h-px bg-[#E5E7EB]"></div>
+            <div class="flex items-center gap-x-1.5">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold" style="background-color: #1F4088; color: white;">2</div>
+              <span class="text-[#1F4088]">SCHEDULE</span>
+            </div>
+            <div class="w-4 h-px bg-[#E5E7EB]"></div>
+            <div class="flex items-center gap-x-1.5">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold" style="background-color: #1F4088; color: white;">3</div>
+              <span class="text-[#1F4088]">DETAILS</span>
+            </div>
+          </div>
+
+          <h2 class="text-4xl font-semibold tracking-[-0.03em] section-header">Book your cleaning</h2>
+          <p class="mt-2 text-[#475569]">Takes less than 60 seconds. Our team will contact you during office hours.</p>
+
+          <!-- Booking note -->
+          <div class="mt-3 inline-flex items-center gap-x-2 rounded-full bg-amber-50 border border-amber-200 px-3 py-1 text-xs font-medium text-amber-700">
+            <i class="fa-solid fa-clock"></i>
+            <span>Current waiting period: 2–3 weeks</span>
+          </div>
+        </div>
+
+        <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-6">
+          
+          <!-- Specific Aircon Type Selection -->
+          <div>
+            <label class="block text-sm font-semibold mb-3 text-[#1F2937]">Select your aircon types</label>
+            <p class="text-xs text-[#64748B] -mt-2 mb-3">Different unit types have different cleaning requirements and pricing.</p>
+
+            <div class="space-y-2" id="unit-types">
+              <!-- Split -->
+              <div class="flex items-center justify-between rounded-2xl border border-[#E5E7EB] px-4 py-3">
+                <div>
+                  <div class="font-semibold">Split Units <span class="font-normal text-[#64748B] text-sm">— $900</span></div>
+                  <div class="text-xs text-[#64748B]">Wall-mounted (most common)</div>
+                </div>
+                <div class="flex items-center gap-x-3">
+                  <button type="button" onclick="changeQuantity('split', -1)" class="w-8 h-8 flex items-center justify-center rounded-xl border border-[#E5E7EB] hover:bg-[#F8F9FB] active:scale-95 transition">-</button>
+                  <div class="w-8 text-center font-semibold tabular-nums text-lg" id="qty-split">0</div>
+                  <button type="button" onclick="changeQuantity('split', 1)" class="w-8 h-8 flex items-center justify-center rounded-xl border border-[#E5E7EB] hover:bg-[#F8F9FB] active:scale-95 transition">+</button>
+                </div>
+              </div>
+
+              <!-- Window -->
+              <div class="flex items-center justify-between rounded-2xl border border-[#E5E7EB] px-4 py-3">
+                <div>
+                  <div class="font-semibold">Window Units <span class="font-normal text-[#64748B] text-sm">— $600</span></div>
+                  <div class="text-xs text-[#64748B]">Traditional window box type</div>
+                </div>
+                <div class="flex items-center gap-x-3">
+                  <button type="button" onclick="changeQuantity('window', -1)" class="w-8 h-8 flex items-center justify-center rounded-xl border border-[#E5E7EB] hover:bg-[#F8F9FB] active:scale-95 transition">-</button>
+                  <div class="w-8 text-center font-semibold tabular-nums text-lg" id="qty-window">0</div>
+                  <button type="button" onclick="changeQuantity('window', 1)" class="w-8 h-8 flex items-center justify-center rounded-xl border border-[#E5E7EB] hover:bg-[#F8F9FB] active:scale-95 transition">+</button>
+                </div>
+              </div>
+
+              <!-- Cassette -->
+              <div class="flex items-center justify-between rounded-2xl border border-[#E5E7EB] px-4 py-3">
+                <div>
+                  <div class="font-semibold">Cassette Units <span class="font-normal text-[#64748B] text-sm">— $1,400</span></div>
+                  <div class="text-xs text-[#64748B]">Ceiling cassette (4-way)</div>
+                </div>
+                <div class="flex items-center gap-x-3">
+                  <button type="button" onclick="changeQuantity('cassette', -1)" class="w-8 h-8 flex items-center justify-center rounded-xl border border-[#E5E7EB] hover:bg-[#F8F9FB] active:scale-95 transition">-</button>
+                  <div class="w-8 text-center font-semibold tabular-nums text-lg" id="qty-cassette">0</div>
+                  <button type="button" onclick="changeQuantity('cassette', 1)" class="w-8 h-8 flex items-center justify-center rounded-xl border border-[#E5E7EB] hover:bg-[#F8F9FB] active:scale-95 transition">+</button>
+                </div>
+              </div>
+
+              <!-- Built-in -->
+              <div class="flex items-center justify-between rounded-2xl border border-[#E5E7EB] px-4 py-3">
+                <div>
+                  <div class="font-semibold">Built-in / Ducted <span class="font-normal text-[#64748B] text-sm">— $1,100</span></div>
+                  <div class="text-xs text-[#64748B]">Concealed ducted systems</div>
+                </div>
+                <div class="flex items-center gap-x-3">
+                  <button type="button" onclick="changeQuantity('builtin', -1)" class="w-8 h-8 flex items-center justify-center rounded-xl border border-[#E5E7EB] hover:bg-[#F8F9FB] active:scale-95 transition">-</button>
+                  <div class="w-8 text-center font-semibold tabular-nums text-lg" id="qty-builtin">0</div>
+                  <button type="button" onclick="changeQuantity('builtin', 1)" class="w-8 h-8 flex items-center justify-center rounded-xl border border-[#E5E7EB] hover:bg-[#F8F9FB] active:scale-95 transition">+</button>
+                </div>
+              </div>
+
+              <!-- Under-Ceiling -->
+              <div class="flex items-center justify-between rounded-2xl border border-[#E5E7EB] px-4 py-3">
+                <div>
+                  <div class="font-semibold">Under-Ceiling <span class="font-normal text-[#64748B] text-sm">— $1,100</span></div>
+                  <div class="text-xs text-[#64748B]">Exposed under-ceiling units</div>
+                </div>
+                <div class="flex items-center gap-x-3">
+                  <button type="button" onclick="changeQuantity('underceiling', -1)" class="w-8 h-8 flex items-center justify-center rounded-xl border border-[#E5E7EB] hover:bg-[#F8F9FB] active:scale-95 transition">-</button>
+                  <div class="w-8 text-center font-semibold tabular-nums text-lg" id="qty-underceiling">0</div>
+                  <button type="button" onclick="changeQuantity('underceiling', 1)" class="w-8 h-8 flex items-center justify-center rounded-xl border border-[#E5E7EB] hover:bg-[#F8F9FB] active:scale-95 transition">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-2.5 text-sm">
+              <span class="font-medium text-[#1F2937]">Total units selected:</span> 
+              <span class="font-semibold tabular-nums" id="total-units-display">0</span>
+            </div>
+          </div>
+
+          <!-- Time Window -->
+          <div>
+            <label class="block text-sm font-semibold mb-2 text-[#1F2937]">Preferred time window</label>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="time-options">
+              <div onclick="selectTime(this, '09:00-12:00')" class="time-pill active cursor-pointer px-4 py-[13px] rounded-2xl text-sm font-medium text-center" data-time="09:00-12:00">
+                <div>Morning</div>
+                <div class="text-[10px] opacity-70 tracking-tight">9:00 – 12:00</div>
+              </div>
+              <div onclick="selectTime(this, '12:00-15:00')" class="time-pill cursor-pointer px-4 py-[13px] rounded-2xl text-sm font-medium text-center" data-time="12:00-15:00">
+                <div>Afternoon</div>
+                <div class="text-[10px] opacity-70 tracking-tight">12:00 – 15:00</div>
+              </div>
+              <div onclick="selectTime(this, '15:00-17:30')" class="time-pill cursor-pointer px-4 py-[13px] rounded-2xl text-sm font-medium text-center" data-time="15:00-17:30">
+                <div>Late afternoon</div>
+                <div class="text-[10px] opacity-70 tracking-tight">3.00pm – 5.30pm</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- District -->
+          <div>
+            <label class="block text-sm font-semibold mb-2 text-[#1F2937]">District</label>
+            <div class="relative">
+              <select id="district" required class="form-input w-full minimal-input border border-[#E5E7EB] rounded-2xl px-4 appearance-none text-[#1F2937]">
+                <option value="">Select district</option>
+
+                <optgroup label="Hong Kong Island">
+                  <option value="Central &amp; Western">Central &amp; Western</option>
+                  <option value="Wan Chai">Wan Chai</option>
+                  <option value="Eastern">Eastern (Quarry Bay, Taikoo, Sai Wan Ho)</option>
+                  <option value="Southern">Southern (Aberdeen, Pok Fu Lam, Repulse Bay)</option>
+                </optgroup>
+
+                <optgroup label="Kowloon">
+                  <option value="Yau Tsim Mong">Yau Tsim Mong (TST, Jordan, Mong Kok)</option>
+                  <option value="Kowloon City">Kowloon City (Ho Man Tin, Kowloon Tong, Kai Tak)</option>
+                  <option value="Sham Shui Po">Sham Shui Po</option>
+                  <option value="Kwun Tong">Kwun Tong</option>
+                  <option value="Wong Tai Sin">Wong Tai Sin</option>
+                </optgroup>
+
+                <optgroup label="New Territories">
+                  <option value="Kwai Tsing">Kwai Tsing (Kwai Chung, Tsing Yi)</option>
+                  <option value="Tsuen Wan">Tsuen Wan</option>
+                  <option value="Tuen Mun">Tuen Mun</option>
+                  <option value="Yuen Long">Yuen Long</option>
+                  <option value="North">North (Sheung Shui, Fanling)</option>
+                  <option value="Tai Po">Tai Po</option>
+                  <option value="Sha Tin">Sha Tin</option>
+                  <option value="Sai Kung">Sai Kung (including Tseung Kwan O)</option>
+                  <option value="Islands">Islands (Discovery Bay, Lantau, Mui Wo)</option>
+                </optgroup>
+              </select>
+              <i class="fa-solid fa-chevron-down absolute right-4 top-4 text-[#94A3B8] pointer-events-none"></i>
+            </div>
+          </div>
+
+          <!-- Contact -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-sm font-semibold mb-2 text-[#1F2937]">Full name</label>
+              <input type="text" id="name" required placeholder="Alex Wong" 
+                     class="form-input w-full minimal-input border border-[#E5E7EB] rounded-2xl px-4">
+            </div>
+            <div>
+              <label class="block text-sm font-semibold mb-2 text-[#1F2937]">WhatsApp number</label>
+              <input type="tel" id="phone" required placeholder="9887 7273" value="9887 7273"
+                     class="form-input w-full minimal-input border border-[#E5E7EB] rounded-2xl px-4">
+            </div>
+          </div>
+
+          <!-- Notes -->
+          <div>
+            <label class="block text-sm font-semibold mb-2 text-[#1F2937]">Anything we should know? <span class="text-[#94A3B8] font-normal">(optional)</span></label>
+            <textarea id="notes" rows="2" placeholder="e.g. 2 split units are very high up, dog at home, access code required..."
+                      class="form-input w-full border border-[#E5E7EB] rounded-2xl px-4 py-3.5 text-[15px] resize-y"></textarea>
+          </div>
+
+          <div class="pt-2">
+            <button type="submit" 
+                    class="sophisticated-btn w-full md:w-auto flex items-center justify-center gap-x-3 px-14 py-4 rounded-2xl text-[15px] font-semibold text-white shadow-sm"
+                    style="background-color: #1F4088;">
+              <span>Submit quote request</span>
+            </button>
+
+            <!-- What happens next (reduces anxiety - TaskRabbit style) -->
+            <div class="mt-4 text-xs text-[#475569] bg-[#F8F9FB] rounded-2xl p-3.5 border border-[#E5E7EB]">
+              <div class="font-semibold text-[#1F2937] mb-1">What happens next</div>
+              <ol class="list-decimal list-inside space-y-0.5 text-[#64748B]">
+                <li>Our team will contact you via WhatsApp during office hours to confirm your booking</li>
+                <li>Technician arrives, protects your home, and cleans thoroughly</li>
+                <li>Pay only after you’re happy. 3 months of after-service coverage included.</li>
+              </ol>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Live Summary Card (enhanced with trust + proof) -->
+      <div class="lg:col-span-5 mt-10 lg:mt-0">
+        <div class="lg:sticky lg:top-24">
+          <div class="booking-summary rounded-3xl border border-[#E5E7EB] p-7 premium-shadow">
+            <div class="flex items-center justify-between mb-5">
+              <div>
+                <div class="text-sm font-semibold tracking-wide" style="color: #1F4088;">YOUR BOOKING</div>
+                <div class="text-2xl font-semibold tracking-tight" id="summary-date">Select a date</div>
+              </div>
+              <div class="text-right">
+                <div class="text-xs text-[#64748B]" id="price-label">Total</div>
+                <div class="text-3xl font-semibold tabular-nums tracking-tighter" id="summary-price">HK$ 0</div>
+              </div>
+            </div>
+
+            <div class="space-y-[13px] text-sm border-t border-[#E5E7EB] pt-5">
+              <div class="flex justify-between items-center">
+                <span class="text-[#475569]">Time window</span>
+                <span class="font-semibold" id="summary-time">Morning (9:00 – 12:00)</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-[#475569]">District</span>
+                <span class="font-semibold" id="summary-district">—</span>
+              </div>
+
+              <!-- Detailed Cost Breakdown (Invoice style) -->
+              <div id="cost-breakdown" class="pt-4 mt-1 border-t border-[#E5E7EB]">
+                <div class="flex items-baseline justify-between mb-2.5">
+                  <div class="font-semibold text-[#1F2937]">Cost Breakdown</div>
+                  <div class="text-[10px] text-[#64748B] leading-tight text-right">
+                    Save 5% for every<br>$2,000 spent (max 15%)
+                  </div>
+                </div>
+
+                <div id="breakdown-lines" class="space-y-1 text-sm"></div>
+                
+                <!-- Discount and totals will be injected here by JS -->
+                <div id="breakdown-totals" class="mt-3 pt-3 border-t border-[#E5E7EB] space-y-1 text-sm"></div>
+              </div>
+
+              <!-- What's included (kept for trust) -->
+              <div class="pt-3">
+                <div class="font-semibold mb-2 text-[#1F2937]">What's included</div>
+                <div class="grid grid-cols-1 gap-y-1 text-sm">
+                  <div class="flex items-center gap-x-2 text-[#475569]"><i class="fa-solid fa-check text-[#1F4088] w-3.5"></i> <span>Deep chemical-free clean</span></div>
+                  <div class="flex items-center gap-x-2 text-[#475569]"><i class="fa-solid fa-check text-[#1F4088] w-3.5"></i> <span>Filters, coils &amp; drainage</span></div>
+                  <div class="flex items-center gap-x-2 text-[#475569]"><i class="fa-solid fa-check text-[#1F4088] w-3.5"></i> <span>Anti-Microbial Protective Treatment</span></div>
+                  <div class="flex items-center gap-x-2 text-[#475569]"><i class="fa-solid fa-check text-[#1F4088] w-3.5"></i> <span>3 months after-service coverage</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Trust row inside summary (highly effective pattern) -->
+            <div class="mt-5 pt-4 border-t border-[#E5E7EB] flex items-center gap-x-3">
+              <div class="flex -space-x-1">
+                <img src="assets/family-1.png" class="w-6 h-6 rounded-full object-cover ring-1 ring-white">
+                <img src="assets/family-2.png" class="w-6 h-6 rounded-full object-cover ring-1 ring-white">
+                <img src="assets/family-3.png" class="w-6 h-6 rounded-full object-cover ring-1 ring-white">
+              </div>
+              <div class="text-xs leading-tight text-[#475569]">
+                <span class="font-semibold text-[#1F2937]">Thousands of families</span> served in Hong Kong
+              </div>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-[#E5E7EB] text-xs text-[#64748B]">
+              <i class="fa-solid fa-lock mr-1.5"></i>
+              No payment today. Pay after the service is complete.
+            </div>
+          </div>
+
+          <div class="mt-3 flex items-center justify-center gap-x-2 text-xs">
+            <div class="px-3 py-1 rounded-full bg-white border border-[#E5E7EB] flex items-center gap-x-1.5">
+              <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
+              <span class="font-medium text-[#1F2937]">Office hours: Mon–Fri 8am–5:30pm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- How it works -->
+  <div id="how" class="bg-white border-y border-[#E5E7EB] py-16">
+    <div class="max-w-5xl mx-auto px-8">
+      <div class="text-center mb-10">
+        <div class="uppercase text-xs tracking-[1px] font-semibold text-[#1F4088]">THREE SIMPLE STEPS</div>
+        <h3 class="text-3xl font-semibold tracking-tight mt-2">How it works</h3>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="text-center px-4">
+          <div class="mx-auto w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style="background-color: #F1F5F9;">
+            <i class="fa-solid fa-calendar-check text-2xl" style="color: #1F4088;"></i>
+          </div>
+          <div class="font-semibold text-lg">1. Book online</div>
+          <p class="mt-2 text-sm text-[#475569]">Fill out the form in under 60 seconds. We’ll note your preferred time and get back to you during office hours.</p>
+        </div>
+        <div class="text-center px-4">
+          <div class="mx-auto w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style="background-color: #F1F5F9;">
+            <i class="fa-brands fa-whatsapp text-2xl" style="color: #1F4088;"></i>
+          </div>
+          <div class="font-semibold text-lg">2. Confirmation during office hours</div>
+          <p class="mt-2 text-sm text-[#475569]">Our team will contact you via WhatsApp during office hours to confirm your booking and answer any questions.</p>
+        </div>
+        <div class="text-center px-4">
+          <div class="mx-auto w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style="background-color: #F1F5F9;">
+            <i class="fa-solid fa-wind text-2xl" style="color: #1F4088;"></i>
+          </div>
+          <div class="font-semibold text-lg">3. Breathe easy</div>
+          <p class="mt-2 text-sm text-[#475569]">Our trained technicians arrive on time, protect your home, and leave it cleaner than we found it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Guarantees -->
+  <div id="guarantees" class="max-w-7xl mx-auto px-8 py-16">
+    <div class="max-w-2xl mb-9">
+      <div class="uppercase tracking-[1px] text-xs font-semibold text-[#1F4088]">OUR PROMISE TO YOU</div>
+      <h3 class="text-3xl font-semibold tracking-[-0.02em] mt-2">Peace of mind, every time.</h3>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="bg-white rounded-3xl p-6 border border-[#E5E7EB]">
+        <div class="font-semibold text-lg leading-tight">Trained specialists only</div>
+        <p class="mt-3 text-sm text-[#475569]">Every technician completes our 3-month internal training. We don’t send apprentices to your home.</p>
+      </div>
+      <div class="bg-white rounded-3xl p-6 border border-[#E5E7EB]">
+        <div class="font-semibold text-lg leading-tight">Non-toxic cleaning agents</div>
+        <p class="mt-3 text-sm text-[#475569]">Safe for children, pets, and allergy sufferers. No harsh chemicals that linger in your space.</p>
+      </div>
+      <div class="bg-white rounded-3xl p-6 border border-[#E5E7EB]">
+        <div class="font-semibold text-lg leading-tight">Complete home protection</div>
+        <p class="mt-3 text-sm text-[#475569]">We cover floors and furniture before we begin. You’ll never find a drop of water or dirt after we leave.</p>
+      </div>
+      <div class="bg-white rounded-3xl p-6 border border-[#E5E7EB]">
+        <div class="font-semibold text-lg leading-tight">Transparent &amp; fair pricing</div>
+        <p class="mt-3 text-sm text-[#475569]">What you see is what you pay. No hidden fees, ever. Payment only after the service is complete.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <div id="reviews" class="bg-[#F8F9FB] py-16 border-y border-[#E5E7EB]">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <div class="uppercase text-xs tracking-[1px] font-semibold text-[#1F4088]">REAL FEEDBACK</div>
+          <h3 class="text-3xl font-semibold tracking-tight mt-1">Families who breathe easier</h3>
+        </div>
+        <a href="https://maps.app.goo.gl/..." target="_blank" class="hidden sm:block text-sm font-medium text-[#1F4088] hover:underline">Read all 460+ reviews →</a>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="bg-white rounded-3xl p-6 border border-[#E5E7EB]">
+          <div class="flex gap-x-1 text-[#F59E0B] mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="text-[15px] leading-snug">"They arrived on time, explained everything, and were incredibly clean. I could stay home with my kids during the service because they use safe products. Will never use anyone else."</p>
+          <div class="mt-5 text-xs font-medium text-[#64748B]">— Tiffany Kwan, <span class="font-normal">Mid-Levels</span></div>
+        </div>
+        
+        <div class="bg-white rounded-3xl p-6 border border-[#E5E7EB]">
+          <div class="flex gap-x-1 text-[#F59E0B] mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="text-[15px] leading-snug">"The team was professional, punctual and extremely neat. My husband has dust allergies and we can actually feel the difference in air quality. This is now a twice-yearly ritual for us."</p>
+          <div class="mt-5 text-xs font-medium text-[#64748B]">— Sasha Overdijk, <span class="font-normal">Kowloon Tong</span></div>
+        </div>
+        
+        <div class="bg-white rounded-3xl p-6 border border-[#E5E7EB]">
+          <div class="flex gap-x-1 text-[#F59E0B] mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="text-[15px] leading-snug">"I was shocked at how much dirt came out of units I thought were ‘fine’. Josh showed me everything and gave genuinely useful advice. The price was fair and the service was exceptional."</p>
+          <div class="mt-5 text-xs font-medium text-[#64748B]">— Adam Jackson-Boothby, <span class="font-normal">Tai Po</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Final CTA -->
+  <div class="max-w-3xl mx-auto px-8 py-16 text-center">
+    <div class="text-sm font-medium tracking-widest text-[#1F4088]">READY WHEN YOU ARE</div>
+    <h3 class="text-4xl font-semibold tracking-[-0.02em] mt-3">Let’s make your home feel fresh again.</h3>
+    <p class="mt-3 text-[#475569]">Most families book 3–4 cleans per year. Your first clean is the most dramatic.</p>
+    
+    <button onclick="document.getElementById('booking-section').scrollIntoView({ behavior: 'smooth', block: 'start' })" 
+            class="mt-7 sophisticated-btn inline-flex items-center justify-center px-10 py-3.5 rounded-2xl text-[15px] font-semibold text-white shadow-sm"
+            style="background-color: #1F4088;">
+      Request a quote
+    </button>
+  </div>
+
+  <!-- Refined Footer -->
+  <footer class="border-t border-[#E5E7EB] bg-white py-9 text-sm">
+    <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row md:items-center justify-between gap-y-4 text-[#64748B]">
+      <div class="flex items-center gap-x-5">
+        <div>© Breathe Easy HK 2025</div>
+        <div class="hidden md:block">•</div>
+        <a href="#" class="hover:text-[#1F4088]">Privacy</a>
+        <a href="#" class="hover:text-[#1F4088]">Terms</a>
+      </div>
+      
+      <div class="flex items-center gap-x-6">
+        <a href="https://wa.me/85298877273" class="flex items-center gap-x-2 hover:text-[#1F4088]">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>+852 9887 7273</span>
+        </a>
+        <div class="hidden md:block">•</div>
+        <div>Mon–Sun, 8am–9pm</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Success Modal -->
+  <div id="success-modal" onclick="if (event.target.id === 'success-modal') closeModal()" class="hidden fixed inset-0 z-[70] bg-black/60 backdrop-blur-sm flex items-center justify-center p-5">
+    <div onclick="event.stopImmediatePropagation()" class="modal bg-white rounded-3xl max-w-lg w-full shadow-2xl overflow-hidden border border-[#E5E7EB]">
+      
+      <div class="px-8 pt-8 pb-7">
+        <div class="flex justify-between items-start">
+          <div>
+            <div class="inline-flex items-center justify-center w-11 h-11 rounded-2xl mb-4" style="background-color: #E6F4F9;">
+              <i class="fa-solid fa-check text-xl" style="color: #1F4088;"></i>
+            </div>
+            <div class="text-2xl font-semibold tracking-tight">Booking request received</div>
+            <div class="text-[#475569] mt-1">Reference <span id="modal-ref" class="font-mono font-medium text-[#1F4088]"></span></div>
+          </div>
+          <button onclick="closeModal()" class="text-[#94A3B8] hover:text-[#64748B] text-xl leading-none">×</button>
+        </div>
+
+        <div class="my-6 h-px bg-[#E5E7EB]"></div>
+
+        <div class="space-y-2 text-sm" id="modal-summary"></div>
+      </div>
+
+      <div class="bg-[#F8F9FB] px-8 py-6 border-t border-[#E5E7EB]">
+        <button onclick="openWhatsApp()" 
+                class="w-full flex items-center justify-center gap-x-3 bg-[#25D366] hover:bg-[#20BA5A] transition-colors text-white font-semibold py-4 rounded-2xl text-[15px]">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>Message us on WhatsApp to confirm</span>
+        </button>
+        <p class="text-center text-xs text-[#64748B] mt-4">We will contact you via WhatsApp during office hours (Monday–Friday, 8am–5:30pm).</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ==================== CONFIGURATION ====================
+    // EDIT THESE PRICES - per unit pricing in HKD (easy to adjust)
+    const UNIT_PRICES = {
+      split: 900,        // Split / Wall-mounted units (most common)
+      window: 600,       // Window units
+      cassette: 1400,    // Cassette units (ceiling mounted)
+      builtin: 1100,     // Built-in / Ducted units
+      underceiling: 1100 // Under-ceiling units
+    }
+
+    const WHATSAPP_NUMBER = '85298877273'
+
+    // Current selection state
+    let unitQuantities = {
+      split: 0,
+      window: 0,
+      cassette: 0,
+      builtin: 0,
+      underceiling: 0
+    }
+    let currentTime = '09:00-12:00'
+    let totalUnits = 0
+
+    // Pricing breakdown state
+    let subtotal = 0
+    let discountRate = 0
+    let discountAmount = 0
+    let finalTotal = 0
+
+    // Calculate totals + volume discount
+    // Rule: Every $2000 → 5% off, max 15%
+    function calculateTotals() {
+      totalUnits = Object.values(unitQuantities).reduce((sum, qty) => sum + qty, 0)
+      
+      subtotal = 
+        (unitQuantities.split * UNIT_PRICES.split) +
+        (unitQuantities.window * UNIT_PRICES.window) +
+        (unitQuantities.cassette * UNIT_PRICES.cassette) +
+        (unitQuantities.builtin * UNIT_PRICES.builtin) +
+        (unitQuantities.underceiling * UNIT_PRICES.underceiling)
+
+      // Volume discount: 5% for every full $2000, capped at 15%
+      discountRate = Math.min(Math.floor(subtotal / 2000) * 5, 15)
+      discountAmount = Math.round(subtotal * (discountRate / 100))
+      finalTotal = subtotal - discountAmount
+    }
+
+    // Change quantity for a specific type
+    function changeQuantity(type, delta) {
+      const newValue = Math.max(0, (unitQuantities[type] || 0) + delta)
+      unitQuantities[type] = newValue
+
+      // Update the display number
+      const display = document.getElementById(`qty-${type}`)
+      if (display) display.textContent = newValue
+
+      calculateTotals()
+      updateSummary()
+      updateTotalUnitsDisplay()
+    }
+
+    // Update the total units display
+    function updateTotalUnitsDisplay() {
+      const el = document.getElementById('total-units-display')
+      if (el) el.textContent = totalUnits
+    }
+
+    // (Old unit cards removed - now using per-type quantity selectors)
+
+    // Time selection
+    function selectTime(element, time) {
+      document.querySelectorAll('#time-options .time-pill').forEach(el => el.classList.remove('active'))
+      element.classList.add('active')
+      
+      currentTime = time
+      updateSummary()
+    }
+
+    // Update live summary
+    function updateSummary() {
+      const timeEl = document.getElementById('summary-time')
+      const districtEl = document.getElementById('summary-district')
+      const priceEl = document.getElementById('summary-price')
+      const dateEl = document.getElementById('summary-date')
+      
+      const districtVal = document.getElementById('district').value
+      
+      calculateTotals()
+
+      // (Units breakdown is now handled inside the detailed Cost Breakdown section)
+      
+      // Time label
+      const timeLabels = {
+        '09:00-12:00': 'Morning (9:00 – 12:00)',
+        '12:00-15:00': 'Afternoon (12:00 – 15:00)',
+        '15:00-17:30': 'Late afternoon (3.00pm – 5.30pm)'
+      }
+      timeEl.textContent = timeLabels[currentTime] || currentTime
+      
+      // District
+      districtEl.textContent = districtVal || '—'
+      
+      // Date - removed preferred date field, so always show flexible
+      dateEl.textContent = 'Flexible date'
+      
+      // Price display with discount (top right)
+      const priceLabel = document.getElementById('price-label')
+
+      if (discountRate > 0) {
+        priceLabel.textContent = 'Total after discount'
+        priceEl.innerHTML = `
+          <div class="text-right">
+            <div class="text-sm text-[#64748B] line-through">HK$ ${subtotal.toLocaleString()}</div>
+            <div class="text-[#1F4088]">HK$ ${finalTotal.toLocaleString()}</div>
+            <div class="text-[10px] font-medium text-emerald-600">−${discountRate}% volume discount</div>
+          </div>
+        `
+      } else {
+        priceLabel.textContent = 'Total'
+        priceEl.textContent = `HK$ ${finalTotal.toLocaleString()}`
+      }
+
+      // === Detailed Invoice-style Cost Breakdown ===
+      const linesContainer = document.getElementById('breakdown-lines')
+      const totalsContainer = document.getElementById('breakdown-totals')
+
+      const typeInfo = {
+        split:       { label: 'Split Units',       price: UNIT_PRICES.split },
+        window:      { label: 'Window Units',      price: UNIT_PRICES.window },
+        cassette:    { label: 'Cassette Units',    price: UNIT_PRICES.cassette },
+        builtin:     { label: 'Built-in / Ducted', price: UNIT_PRICES.builtin },
+        underceiling:{ label: 'Under-Ceiling',     price: UNIT_PRICES.underceiling }
+      }
+
+      if (totalUnits > 0) {
+        let linesHTML = ''
+
+        Object.keys(unitQuantities).forEach(key => {
+          const qty = unitQuantities[key]
+          if (qty > 0) {
+            const info = typeInfo[key]
+            const lineTotal = qty * info.price
+            linesHTML += `
+              <div class="flex justify-between text-[#475569]">
+                <span>${qty} × ${info.label} <span class="text-xs text-[#94A3B8]">@ $${info.price}</span></span>
+                <span class="font-medium">HK$ ${lineTotal.toLocaleString()}</span>
+              </div>
+            `
+          }
+        })
+
+        linesContainer.innerHTML = linesHTML
+
+        // Totals section
+        let totalsHTML = `
+          <div class="flex justify-between pt-1">
+            <span class="text-[#475569]">Subtotal</span>
+            <span class="font-medium">HK$ ${subtotal.toLocaleString()}</span>
+          </div>
+        `
+
+        if (discountRate > 0) {
+          // Calculate the threshold they hit for ultra simple messaging
+          const thresholdHit = discountRate / 5 * 2000;
+          
+          totalsHTML += `
+            <div class="flex justify-between text-emerald-600">
+              <span>Discount (−${discountRate}%)</span>
+              <span>−HK$ ${discountAmount.toLocaleString()}</span>
+            </div>
+            <div class="text-[11px] text-emerald-600/80 -mt-0.5">
+              Because you spent over HK$${thresholdHit.toLocaleString()}
+            </div>
+          `
+        }
+
+        totalsHTML += `
+          <div class="flex justify-between pt-2 mt-1 border-t border-[#E5E7EB] font-semibold text-base">
+            <span>Total to pay</span>
+            <span class="tabular-nums">HK$ ${finalTotal.toLocaleString()}</span>
+          </div>
+        `
+
+        totalsContainer.innerHTML = totalsHTML
+        document.getElementById('cost-breakdown').style.display = 'block'
+      } else {
+        linesContainer.innerHTML = ''
+        totalsContainer.innerHTML = ''
+        document.getElementById('cost-breakdown').style.display = 'none'
+      }
+    }
+
+    // Real-time summary updates
+    function attachLiveListeners() {
+      const districtSelect = document.getElementById('district')
+      
+      districtSelect.addEventListener('change', updateSummary)
+      
+      // Also listen to unit and time changes (already handled in their functions)
+    }
+
+    // Form submission handler
+    async function handleBookingSubmit(e) {
+      e.preventDefault()
+      
+      const form = e.target
+      
+      // Collect data
+      const bookingData = {
+        ref: 'BE-' + Date.now().toString().slice(-8),
+        units: totalUnits,
+        unitBreakdown: { ...unitQuantities },
+        time: currentTime,
+        district: document.getElementById('district').value,
+        name: document.getElementById('name').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        notes: document.getElementById('notes').value.trim() || 'None',
+        subtotal: subtotal,
+        discountRate: discountRate,
+        discountAmount: discountAmount,
+        price: finalTotal,           // final amount after discount
+        timestamp: new Date().toISOString()
+      }
+      
+      // Basic validation
+      if (totalUnits === 0) {
+        alert('Please select at least one aircon unit.')
+        return
+      }
+      if (!bookingData.district || !bookingData.name || !bookingData.phone) {
+        alert('Please fill in all required fields.')
+        return
+      }
+      
+      // Show beautiful success modal
+      showSuccessModal(bookingData)
+      
+      // Optional: You can add an actual webhook here later
+      // Example: fetch('https://your-webhook.com', { method: 'POST', body: JSON.stringify(bookingData) })
+    }
+
+    function showSuccessModal(data) {
+      const modal = document.getElementById('success-modal')
+      const refEl = document.getElementById('modal-ref')
+      const summaryEl = document.getElementById('modal-summary')
+      
+      refEl.textContent = data.ref
+      
+      const timeMap = {
+        '09:00-12:00': '9:00am – 12:00pm',
+        '12:00-15:00': '12:00pm – 3:00pm',
+        '15:00-17:30': '3.00pm – 5.30pm'
+      }
+
+      // Build detailed invoice-style breakdown for modal
+      const modalTypeInfo = {
+        split:       { label: 'Split Units',       price: 900 },
+        window:      { label: 'Window Units',      price: 600 },
+        cassette:    { label: 'Cassette Units',    price: 1400 },
+        builtin:     { label: 'Built-in / Ducted', price: 1100 },
+        underceiling:{ label: 'Under-Ceiling',     price: 1100 }
+      }
+
+      let modalLinesHTML = ''
+      let hasUnits = false
+
+      Object.keys(data.unitBreakdown || {}).forEach(key => {
+        const qty = data.unitBreakdown[key]
+        if (qty > 0) {
+          hasUnits = true
+          const info = modalTypeInfo[key]
+          const lineTotal = qty * info.price
+          modalLinesHTML += `
+            <div class="flex justify-between text-sm py-0.5">
+              <span class="text-[#475569]">${qty} × ${info.label} <span class="text-xs text-[#94A3B8]">@ HK$${info.price}</span></span>
+              <span class="font-medium">HK$ ${lineTotal.toLocaleString()}</span>
+            </div>
+          `
+        }
+      })
+
+      let modalDiscountHTML = ''
+      if (data.discountRate > 0) {
+        modalDiscountHTML = `
+          <div class="flex justify-between text-sm pt-2 mt-2 border-t border-[#E5E7EB]">
+            <span class="text-[#64748B]">Subtotal</span>
+            <span class="line-through text-[#64748B]">HK$ ${data.subtotal.toLocaleString()}</span>
+          </div>
+          <div class="flex justify-between text-sm text-emerald-600">
+            <span>Discount (−${data.discountRate}%)</span>
+            <span>−HK$ ${data.discountAmount.toLocaleString()}</span>
+          </div>
+          <div class="text-[11px] text-emerald-600/80 -mt-0.5">
+            Because you spent over HK$${(data.discountRate / 5 * 2000).toLocaleString()}
+          </div>
+        `
+      }
+
+      summaryEl.innerHTML = `
+        <div class="flex justify-between py-1"><span class="text-[#475569]">Name</span><span class="font-medium">${data.name}</span></div>
+        <div class="flex justify-between py-1"><span class="text-[#475569]">Phone</span><span class="font-medium">${data.phone}</span></div>
+        <div class="flex justify-between py-1"><span class="text-[#475569]">Time window</span><span class="font-medium">${timeMap[data.time]}</span></div>
+        <div class="flex justify-between py-1"><span class="text-[#475569]">Location</span><span class="font-medium">${data.district}</span></div>
+
+        ${hasUnits ? `
+          <div class="pt-3 mt-2 border-t border-[#E5E7EB]">
+            <div class="font-semibold text-sm mb-1.5 text-[#1F2937]">Cost Breakdown</div>
+            ${modalLinesHTML}
+            ${modalDiscountHTML}
+            <div class="flex justify-between pt-2 mt-2 border-t border-[#E5E7EB] font-semibold">
+              <span>Total to pay</span>
+              <span class="tabular-nums">HK$ ${data.price.toLocaleString()}</span>
+            </div>
+          </div>
+        ` : ''}
+      `
+      
+      // Store data globally for WhatsApp button
+      window.currentBookingData = data
+      
+      modal.classList.remove('hidden')
+      modal.classList.add('flex')
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('success-modal')
+      modal.classList.remove('flex')
+      modal.classList.add('hidden')
+      
+      // Reset form for convenience
+      document.getElementById('booking-form').reset()
+      
+      // Reset quantities
+      setTimeout(() => {
+        unitQuantities = { split: 0, window: 0, cassette: 0, builtin: 0, underceiling: 0 }
+        
+        // Reset all quantity displays
+        ['split', 'window', 'cassette', 'builtin', 'underceiling'].forEach(type => {
+          const el = document.getElementById(`qty-${type}`)
+          if (el) el.textContent = '0'
+        })
+        
+        calculateTotals()
+        updateTotalUnitsDisplay()
+        
+        // Re-select first time
+        document.querySelectorAll('#time-options .time-pill').forEach(el => el.classList.remove('active'))
+        document.querySelector('#time-options .time-pill').classList.add('active')
+        currentTime = '09:00-12:00'
+        
+        updateSummary()
+      }, 80)
+    }
+
+    function openWhatsApp() {
+      const data = window.currentBookingData
+      if (!data) return
+      
+      const timeMap = {
+        '09:00-12:00': '9:00am – 12:00pm',
+        '12:00-15:00': '12:00pm – 3:00pm',
+        '15:00-17:30': '3.00pm – 5.30pm'
+      }
+      
+      // Build breakdown for WhatsApp
+      const typeLabels = { split: 'Split', window: 'Window', cassette: 'Cassette', builtin: 'Built-in', underceiling: 'Under-Ceiling' }
+      let waBreakdown = ''
+      Object.keys(data.unitBreakdown || {}).forEach(key => {
+        if (data.unitBreakdown[key] > 0) waBreakdown += `${data.unitBreakdown[key]} ${typeLabels[key]}, `
+      })
+      waBreakdown = waBreakdown.slice(0, -2) || `${data.units} units`
+
+      let waDiscountLine = ''
+      if (data.discountRate > 0) {
+        waDiscountLine = `Discount: −${data.discountRate}% (HK$${data.discountAmount})\n` +
+                         `Subtotal: HK$${data.subtotal}\n`
+      }
+
+      const message = encodeURIComponent(
+        `Hi Breathe Easy, I've submitted a booking request.\n\n` +
+        `Reference: ${data.ref}\n` +
+        `Name: ${data.name}\n` +
+        `Phone: ${data.phone}\n` +
+        `Time: ${timeMap[data.time]}\n` +
+        `Units: ${waBreakdown}\n` +
+        `District: ${data.district}\n` +
+        waDiscountLine +
+        `Total: HK$${data.price}\n` +
+        (data.notes !== 'None' ? `Notes: ${data.notes}\n` : '') +
+        `\nPlease confirm my slot. Thank you!`
+      )
+      
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank')
+    }
+
+    // Initialize everything
+    function init() {
+      // Set default time selection
+      const firstTimePill = document.querySelector('#time-options .time-pill')
+      if (firstTimePill) firstTimePill.classList.add('active')
+      
+      // Initialize quantity displays to 0
+      ['split', 'window', 'cassette', 'builtin', 'underceiling'].forEach(type => {
+        const el = document.getElementById(`qty-${type}`)
+        if (el) el.textContent = '0'
+      })
+      updateTotalUnitsDisplay()
+      
+      // Live listeners
+      attachLiveListeners()
+      
+      // Initial summary
+      setTimeout(() => {
+        updateSummary()
+      }, 50)
+      
+      // Keyboard escape for modal
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          const modal = document.getElementById('success-modal')
+          if (!modal.classList.contains('hidden')) closeModal()
+        }
+      })
+      
+      console.log('%c[Breathe Easy] Premium booking page initialized successfully.', 'color:#94A3B8')
+    }
+    
+    // Boot
+    window.onload = init
+  </script>
+</body>
+</html>
