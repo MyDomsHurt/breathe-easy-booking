@@ -1209,6 +1209,9 @@
 
       // Initialize mobile sticky price bar
       initMobileStickyPrice();
+
+      // On mobile, bring the full detailed quote summary up next to the unit selectors
+      repositionSummaryForMobile();
     }
 
     function initMobileStickyPrice() {
@@ -1297,6 +1300,36 @@
           setTimeout(updateStickyVisibility, 650);
         });
       });
+    }
+
+    // Mobile UX: Move the full quote summary card to sit right after the unit selectors.
+    // This way on phones, while tapping +/- to choose units, the complete live breakdown
+    // (lines, discounts, minimum, total) is always visible immediately below.
+    function repositionSummaryForMobile() {
+      if (window.innerWidth >= 1024) return; // Desktop keeps the original two-column layout
+
+      const grid = document.querySelector('#booking-section > div.grid');
+      if (!grid) return;
+
+      const summaryCol = grid.querySelector(':scope > div.lg\\:col-span-5');
+      const unitsSection = document.getElementById('total-units-display');
+      if (!summaryCol || !unitsSection) return;
+
+      const insertAfter = unitsSection.closest('div.mt-2\\.5') || unitsSection;
+      if (!insertAfter.parentNode) return;
+
+      // Move the summary card to right after the unit quantity controls
+      insertAfter.parentNode.insertBefore(summaryCol, insertAfter.nextSibling);
+
+      // Clean up desktop-only classes for the new mobile position
+      summaryCol.classList.remove('lg:col-span-5', 'mt-10', 'lg:mt-0');
+      summaryCol.classList.add('mt-6', 'mb-8', 'w-full');
+
+      // Remove sticky behavior (not needed when it's inline in the flow on mobile)
+      const stickyInner = summaryCol.querySelector('.lg\\:sticky');
+      if (stickyInner) {
+        stickyInner.classList.remove('lg:sticky', 'lg:top-24');
+      }
     }
     
     // ==================== LANGUAGE SWITCHER ====================
