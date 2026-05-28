@@ -98,6 +98,14 @@
     .trust-badge {
       transition: transform 0.2s ease;
     }
+
+    .lang-btn {
+      color: #64748B;
+    }
+    .lang-btn.active {
+      background-color: #1F4088;
+      color: white;
+    }
     .trust-badge:hover {
       transform: translateY(-1px);
     }
@@ -141,9 +149,9 @@
 
         <!-- Nav -->
         <nav class="hidden md:flex items-center gap-x-9 text-sm font-medium">
-          <a href="#how" class="nav-link text-[#475569] hover:text-[#1F4088]">How it works</a>
-          <a href="#guarantees" class="nav-link text-[#475569] hover:text-[#1F4088]">Our promise</a>
-          <a href="#reviews" class="nav-link text-[#475569] hover:text-[#1F4088]">Reviews</a>
+          <a href="#how" class="nav-link text-[#475569] hover:text-[#1F4088]" data-i18n="navHow">How it works</a>
+          <a href="#guarantees" class="nav-link text-[#475569] hover:text-[#1F4088]" data-i18n="navPromise">Our promise</a>
+          <a href="#reviews" class="nav-link text-[#475569] hover:text-[#1F4088]" data-i18n="navReviews">Reviews</a>
         </nav>
 
         <!-- Right side -->
@@ -153,6 +161,14 @@
             <i class="fa-brands fa-whatsapp text-[#25D366]"></i>
             <span class="text-[#475569]">+852 9887 7273</span>
           </a>
+
+          <!-- Language Switcher -->
+          <div class="flex items-center text-sm font-medium border border-[#E5E7EB] rounded-full overflow-hidden">
+            <button onclick="switchLanguage('en')" id="lang-en"
+                    class="px-3 py-1 transition-colors lang-btn active">EN</button>
+            <button onclick="switchLanguage('zh')" id="lang-zh"
+                    class="px-3 py-1 transition-colors lang-btn">中文</button>
+          </div>
           
           <button onclick="document.getElementById('booking-section').scrollIntoView({ behavior: 'smooth', block: 'start' })" 
                   class="sophisticated-btn px-6 py-2.5 rounded-full text-sm font-semibold text-white shadow-sm"
@@ -165,7 +181,7 @@
   </header>
 
   <!-- Hero -->
-  <div class="pt-20 relative overflow-hidden">
+  <div id="hero" class="pt-20 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-8 pt-12 pb-16">
       <div class="grid lg:grid-cols-12 gap-x-12 items-center">
         
@@ -176,19 +192,20 @@
             <span class="text-xs font-semibold tracking-[0.5px] text-[#475569]">5.0 • 460+ REVIEWS ON GOOGLE</span>
           </div>
 
-          <h1 class="text-[56px] leading-[1.05] font-semibold tracking-[-0.04em] section-header" style="color: #1F2937;">
-            Book your<br>aircon cleaning.
+          <h1 class="text-[56px] leading-[1.05] font-semibold tracking-[-0.04em] section-header" style="color: #1F2937;" data-i18n="heroTitle">
+            Cleaner air.<br>
+            Peace of mind.
           </h1>
-          <p class="mt-5 text-xl text-[#475569] max-w-lg">
-            Professional aircon cleaning.<br>
-            Non-toxic. No mess left behind. Book in advance, especially during peak season.
+          <p class="mt-5 text-xl text-[#475569] max-w-lg" data-i18n="heroSubtitle">
+            Professional aircon cleaning that protects your home and the people in it.<br>
+            Non-toxic. Thorough. Trusted by thousands of Hong Kong families.
           </p>
 
           <div class="mt-8 flex items-center gap-x-4">
             <button onclick="document.getElementById('booking-section').scrollIntoView({ behavior: 'smooth', block: 'start' })" 
                     class="sophisticated-btn inline-flex items-center justify-center px-9 py-4 rounded-2xl text-[15px] font-semibold text-white shadow-sm"
-                    style="background-color: #1F4088;">
-              Schedule your cleaning
+                    style="background-color: #1F4088;" data-i18n="heroCta">
+              Request a quote
             </button>
             
             <a href="#how" 
@@ -204,7 +221,7 @@
               <div class="w-7 h-7 rounded-full border-2 border-white overflow-hidden ring-1 ring-[#E5E7EB]"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=28&h=28&fit=crop&crop=face" class="object-cover"></div>
               <div class="w-7 h-7 rounded-full border-2 border-white overflow-hidden ring-1 ring-[#E5E7EB]"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=28&h=28&fit=crop&crop=face" class="object-cover"></div>
             </div>
-            <div class="text-[#64748B] text-sm">
+            <div class="text-[#64748B] text-sm" data-i18n="heroTrust">
               Trusted by <span class="font-medium text-[#1F2937]">thousands of families</span> across Hong Kong
             </div>
           </div>
@@ -219,7 +236,7 @@
             <div class="absolute bottom-6 left-6 right-6">
               <div class="inline-flex items-center gap-x-2 bg-white/95 backdrop-blur-md px-4 py-2 rounded-2xl text-sm shadow-sm">
                 <i class="fa-solid fa-check text-[#1F4088]"></i>
-                <span class="font-medium text-[#1F2937]">Book in advance for best availability</span>
+                <span class="font-medium text-[#1F2937]" data-i18n="heroBadge">Real reviews. Real results.</span>
               </div>
             </div>
           </div>
@@ -237,8 +254,8 @@
             <i class="fa-solid fa-shield-halved text-xl"></i>
           </div>
           <div class="text-left">
-            <div class="font-semibold text-sm">Non-toxic &amp; safe</div>
-            <div class="text-xs text-[#64748B]">Family &amp; pet friendly</div>
+            <div class="font-semibold text-sm" data-i18n="trustNonToxic">Non-toxic &amp; safe</div>
+            <div class="text-xs text-[#64748B]" data-i18n="trustNonToxicSub">Family &amp; pet friendly</div>
           </div>
         </div>
 
@@ -247,8 +264,8 @@
             <i class="fa-solid fa-broom text-xl"></i>
           </div>
           <div class="text-left">
-            <div class="font-semibold text-sm">Zero mess guarantee</div>
-            <div class="text-xs text-[#64748B]">We leave your home spotless</div>
+            <div class="font-semibold text-sm" data-i18n="trustZeroMess">Zero mess guarantee</div>
+            <div class="text-xs text-[#64748B]" data-i18n="trustZeroMessSub">We leave your home spotless</div>
           </div>
         </div>
         <div class="flex items-center justify-center gap-x-3">
@@ -257,8 +274,8 @@
             <span class="font-semibold text-lg leading-none mt-0.5">5.0</span>
           </div>
           <div class="text-left">
-            <div class="font-semibold text-sm">460+ Google reviews</div>
-            <div class="text-xs text-[#64748B]">Hong Kong’s most trusted</div>
+            <div class="font-semibold text-sm" data-i18n="trustReviews">460+ Google reviews</div>
+            <div class="text-xs text-[#64748B]" data-i18n="trustReviewsSub">Hong Kong’s most trusted</div>
           </div>
         </div>
       </div>
@@ -290,13 +307,17 @@
             </div>
           </div>
 
-          <h2 class="text-4xl font-semibold tracking-[-0.03em] section-header">Book your cleaning</h2>
-          <p class="mt-2 text-[#475569]">Takes less than 60 seconds. Our team will contact you during office hours.</p>
+          <h2 class="text-4xl font-semibold tracking-[-0.03em] section-header" data-i18n="bookingTitle">Request a quote</h2>
+
+          <div class="mt-2 text-[#475569]">
+            <div data-i18n="bookingSubtitle1">Takes less than 90 seconds.</div>
+            <div class="text-sm mt-1" data-i18n="bookingSubtitle2">Our team will contact you during office hours to help finalize and settle payment.</div>
+          </div>
 
           <!-- Booking note -->
           <div class="mt-3 inline-flex items-center gap-x-2 rounded-full bg-amber-50 border border-amber-200 px-3 py-1 text-xs font-medium text-amber-700">
             <i class="fa-solid fa-clock"></i>
-            <span>Current waiting period: 2–3 weeks</span>
+            <span data-i18n="bookingNote">Current waiting time: approximately 2–3 weeks</span>
           </div>
         </div>
 
@@ -304,15 +325,15 @@
           
           <!-- Specific Aircon Type Selection -->
           <div>
-            <label class="block text-sm font-semibold mb-3 text-[#1F2937]">Select your aircon types</label>
-            <p class="text-xs text-[#64748B] -mt-2 mb-3">Different unit types have different cleaning requirements and pricing.</p>
+            <label class="block text-sm font-semibold mb-3 text-[#1F2937]" data-i18n="formUnitTitle">Select your aircon types</label>
+            <p class="text-xs text-[#64748B] -mt-2 mb-3" data-i18n="formUnitDesc">Different unit types have different cleaning requirements and pricing.</p>
 
             <div class="space-y-2" id="unit-types">
               <!-- Split -->
               <div class="flex items-center justify-between rounded-2xl border border-[#E5E7EB] px-4 py-3">
                 <div>
-                  <div class="font-semibold">Split Units <span class="font-normal text-[#64748B] text-sm">— $900</span></div>
-                  <div class="text-xs text-[#64748B]">Wall-mounted (most common)</div>
+                  <div class="font-semibold" data-i18n="unitSplit">Split Units <span class="font-normal text-[#64748B] text-sm">— $900</span></div>
+                  <div class="text-xs text-[#64748B]" data-i18n="unitSplitSub">Wall-mounted (most common)</div>
                 </div>
                 <div class="flex items-center gap-x-3">
                   <button type="button" onclick="changeQuantity('split', -1)" class="w-8 h-8 flex items-center justify-center rounded-xl border border-[#E5E7EB] hover:bg-[#F8F9FB] active:scale-95 transition">-</button>
@@ -324,8 +345,8 @@
               <!-- Window -->
               <div class="flex items-center justify-between rounded-2xl border border-[#E5E7EB] px-4 py-3">
                 <div>
-                  <div class="font-semibold">Window Units <span class="font-normal text-[#64748B] text-sm">— $600</span></div>
-                  <div class="text-xs text-[#64748B]">Traditional window box type</div>
+                  <div class="font-semibold" data-i18n="unitWindow">Window Units <span class="font-normal text-[#64748B] text-sm">— $600</span></div>
+                  <div class="text-xs text-[#64748B]" data-i18n="unitWindowSub">Traditional window box type</div>
                 </div>
                 <div class="flex items-center gap-x-3">
                   <button type="button" onclick="changeQuantity('window', -1)" class="w-8 h-8 flex items-center justify-center rounded-xl border border-[#E5E7EB] hover:bg-[#F8F9FB] active:scale-95 transition">-</button>
@@ -337,8 +358,8 @@
               <!-- Cassette -->
               <div class="flex items-center justify-between rounded-2xl border border-[#E5E7EB] px-4 py-3">
                 <div>
-                  <div class="font-semibold">Cassette Units <span class="font-normal text-[#64748B] text-sm">— $1,400</span></div>
-                  <div class="text-xs text-[#64748B]">Ceiling cassette (4-way)</div>
+                  <div class="font-semibold" data-i18n="unitCassette">Cassette Units <span class="font-normal text-[#64748B] text-sm">— $1,400</span></div>
+                  <div class="text-xs text-[#64748B]" data-i18n="unitCassetteSub">Ceiling cassette (4-way)</div>
                 </div>
                 <div class="flex items-center gap-x-3">
                   <button type="button" onclick="changeQuantity('cassette', -1)" class="w-8 h-8 flex items-center justify-center rounded-xl border border-[#E5E7EB] hover:bg-[#F8F9FB] active:scale-95 transition">-</button>
@@ -350,8 +371,8 @@
               <!-- Built-in -->
               <div class="flex items-center justify-between rounded-2xl border border-[#E5E7EB] px-4 py-3">
                 <div>
-                  <div class="font-semibold">Built-in / Ducted <span class="font-normal text-[#64748B] text-sm">— $1,100</span></div>
-                  <div class="text-xs text-[#64748B]">Concealed ducted systems</div>
+                  <div class="font-semibold" data-i18n="unitBuiltin">Built-in / Ducted <span class="font-normal text-[#64748B] text-sm">— $1,100</span></div>
+                  <div class="text-xs text-[#64748B]" data-i18n="unitBuiltinSub">Concealed ducted systems</div>
                 </div>
                 <div class="flex items-center gap-x-3">
                   <button type="button" onclick="changeQuantity('builtin', -1)" class="w-8 h-8 flex items-center justify-center rounded-xl border border-[#E5E7EB] hover:bg-[#F8F9FB] active:scale-95 transition">-</button>
@@ -363,8 +384,8 @@
               <!-- Under-Ceiling -->
               <div class="flex items-center justify-between rounded-2xl border border-[#E5E7EB] px-4 py-3">
                 <div>
-                  <div class="font-semibold">Under-Ceiling <span class="font-normal text-[#64748B] text-sm">— $1,100</span></div>
-                  <div class="text-xs text-[#64748B]">Exposed under-ceiling units</div>
+                  <div class="font-semibold" data-i18n="unitUnder">Under-Ceiling <span class="font-normal text-[#64748B] text-sm">— $1,100</span></div>
+                  <div class="text-xs text-[#64748B]" data-i18n="unitUnderSub">Exposed under-ceiling units</div>
                 </div>
                 <div class="flex items-center gap-x-3">
                   <button type="button" onclick="changeQuantity('underceiling', -1)" class="w-8 h-8 flex items-center justify-center rounded-xl border border-[#E5E7EB] hover:bg-[#F8F9FB] active:scale-95 transition">-</button>
@@ -382,26 +403,26 @@
 
           <!-- Time Window -->
           <div>
-            <label class="block text-sm font-semibold mb-2 text-[#1F2937]">Preferred time window</label>
+            <label class="block text-sm font-semibold mb-2 text-[#1F2937]" data-i18n="formTimeTitle">Preferred time window</label>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="time-options">
               <div onclick="selectTime(this, '09:00-12:00')" class="time-pill active cursor-pointer px-4 py-[13px] rounded-2xl text-sm font-medium text-center" data-time="09:00-12:00">
-                <div>Morning</div>
-                <div class="text-[10px] opacity-70 tracking-tight">9:00 – 12:00</div>
+                <div data-i18n="timeMorning">Morning</div>
+                <div class="text-[10px] opacity-70 tracking-tight" data-i18n="timeMorningSub">9:00 – 12:00</div>
               </div>
               <div onclick="selectTime(this, '12:00-15:00')" class="time-pill cursor-pointer px-4 py-[13px] rounded-2xl text-sm font-medium text-center" data-time="12:00-15:00">
-                <div>Afternoon</div>
-                <div class="text-[10px] opacity-70 tracking-tight">12:00 – 15:00</div>
+                <div data-i18n="timeAfternoon">Afternoon</div>
+                <div class="text-[10px] opacity-70 tracking-tight" data-i18n="timeAfternoonSub">12:00 – 15:00</div>
               </div>
               <div onclick="selectTime(this, '15:00-17:30')" class="time-pill cursor-pointer px-4 py-[13px] rounded-2xl text-sm font-medium text-center" data-time="15:00-17:30">
-                <div>Late afternoon</div>
-                <div class="text-[10px] opacity-70 tracking-tight">3.00pm – 5.30pm</div>
+                <div data-i18n="timeLate">Late afternoon</div>
+                <div class="text-[10px] opacity-70 tracking-tight" data-i18n="timeLateSub">3.00pm – 5.30pm</div>
               </div>
             </div>
           </div>
 
           <!-- District -->
           <div>
-            <label class="block text-sm font-semibold mb-2 text-[#1F2937]">District</label>
+            <label class="block text-sm font-semibold mb-2 text-[#1F2937]" data-i18n="formDistrict">District</label>
             <div class="relative">
               <select id="district" required class="form-input w-full minimal-input border border-[#E5E7EB] rounded-2xl px-4 appearance-none text-[#1F2937]">
                 <option value="">Select district</option>
@@ -440,12 +461,12 @@
           <!-- Contact -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div>
-              <label class="block text-sm font-semibold mb-2 text-[#1F2937]">Full name</label>
+              <label class="block text-sm font-semibold mb-2 text-[#1F2937]" data-i18n="formName">Full name</label>
               <input type="text" id="name" required placeholder="Alex Wong" 
                      class="form-input w-full minimal-input border border-[#E5E7EB] rounded-2xl px-4">
             </div>
             <div>
-              <label class="block text-sm font-semibold mb-2 text-[#1F2937]">WhatsApp number</label>
+              <label class="block text-sm font-semibold mb-2 text-[#1F2937]" data-i18n="formPhone">WhatsApp number</label>
               <input type="tel" id="phone" required placeholder="9887 7273" value="9887 7273"
                      class="form-input w-full minimal-input border border-[#E5E7EB] rounded-2xl px-4">
             </div>
@@ -462,16 +483,16 @@
             <button type="submit" 
                     class="sophisticated-btn w-full md:w-auto flex items-center justify-center gap-x-3 px-14 py-4 rounded-2xl text-[15px] font-semibold text-white shadow-sm"
                     style="background-color: #1F4088;">
-              <span>Submit quote request</span>
+              <span data-i18n="formSubmit">Submit quote request</span>
             </button>
 
-            <!-- What happens next (reduces anxiety - TaskRabbit style) -->
+            <!-- What happens next -->
             <div class="mt-4 text-xs text-[#475569] bg-[#F8F9FB] rounded-2xl p-3.5 border border-[#E5E7EB]">
-              <div class="font-semibold text-[#1F2937] mb-1">What happens next</div>
+              <div class="font-semibold text-[#1F2937] mb-1" data-i18n="whatNextTitle">What happens next</div>
               <ol class="list-decimal list-inside space-y-0.5 text-[#64748B]">
-                <li>Our team will contact you via WhatsApp during office hours to confirm your booking</li>
-                <li>Technician arrives, protects your home, and cleans thoroughly</li>
-                <li>Pay only after you’re happy. 3 months of after-service coverage included.</li>
+                <li data-i18n="whatNext1">We’ll contact you via WhatsApp during office hours (Mon–Fri, 8am–5:30pm) to confirm your booking and answer any questions.</li>
+                <li data-i18n="whatNext2">A technician will arrive on the scheduled date, protect your home, and carry out a thorough clean.</li>
+                <li data-i18n="whatNext3">Payment is due only after you’re satisfied. Includes 3 months of after-service coverage.</li>
               </ol>
             </div>
           </div>
@@ -508,7 +529,8 @@
                 <div class="flex items-baseline justify-between mb-2.5">
                   <div class="font-semibold text-[#1F2937]">Cost Breakdown</div>
                   <div class="text-[10px] text-[#64748B] leading-tight text-right">
-                    Save 5% for every<br>$2,000 spent (max 15%)
+                    Additional 5% off every $2,000 (max 15%)<br>
+                    Minimum charge: HK$1,200
                   </div>
                 </div>
 
@@ -520,12 +542,12 @@
 
               <!-- What's included (kept for trust) -->
               <div class="pt-3">
-                <div class="font-semibold mb-2 text-[#1F2937]">What's included</div>
+                <div class="font-semibold mb-2 text-[#1F2937]" data-i18n="includedTitle">What's included</div>
                 <div class="grid grid-cols-1 gap-y-1 text-sm">
-                  <div class="flex items-center gap-x-2 text-[#475569]"><i class="fa-solid fa-check text-[#1F4088] w-3.5"></i> <span>Deep chemical-free clean</span></div>
-                  <div class="flex items-center gap-x-2 text-[#475569]"><i class="fa-solid fa-check text-[#1F4088] w-3.5"></i> <span>Filters, coils &amp; drainage</span></div>
-                  <div class="flex items-center gap-x-2 text-[#475569]"><i class="fa-solid fa-check text-[#1F4088] w-3.5"></i> <span>Anti-Microbial Protective Treatment</span></div>
-                  <div class="flex items-center gap-x-2 text-[#475569]"><i class="fa-solid fa-check text-[#1F4088] w-3.5"></i> <span>3 months after-service coverage</span></div>
+                  <div class="flex items-center gap-x-2 text-[#475569]"><i class="fa-solid fa-check text-[#1F4088] w-3.5"></i> <span data-i18n="included1">Deep chemical-free clean</span></div>
+                  <div class="flex items-center gap-x-2 text-[#475569]"><i class="fa-solid fa-check text-[#1F4088] w-3.5"></i> <span data-i18n="included2">Filters, coils &amp; drainage</span></div>
+                  <div class="flex items-center gap-x-2 text-[#475569]"><i class="fa-solid fa-check text-[#1F4088] w-3.5"></i> <span data-i18n="included3">Anti-Microbial Protective Treatment</span></div>
+                  <div class="flex items-center gap-x-2 text-[#475569]"><i class="fa-solid fa-check text-[#1F4088] w-3.5"></i> <span data-i18n="included4">3 months after-service coverage</span></div>
                 </div>
               </div>
             </div>
@@ -544,7 +566,7 @@
 
             <div class="mt-4 pt-4 border-t border-[#E5E7EB] text-xs text-[#64748B]">
               <i class="fa-solid fa-lock mr-1.5"></i>
-              No payment today. Pay after the service is complete.
+              This is a quote. Our team will confirm details and arrange payment after speaking with you.
             </div>
           </div>
 
@@ -564,7 +586,7 @@
     <div class="max-w-5xl mx-auto px-8">
       <div class="text-center mb-10">
         <div class="uppercase text-xs tracking-[1px] font-semibold text-[#1F4088]">THREE SIMPLE STEPS</div>
-        <h3 class="text-3xl font-semibold tracking-tight mt-2">How it works</h3>
+        <h3 class="text-3xl font-semibold tracking-tight mt-2" data-i18n="howTitle">How it works</h3>
       </div>
       
       <div class="grid md:grid-cols-3 gap-6">
@@ -572,22 +594,22 @@
           <div class="mx-auto w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style="background-color: #F1F5F9;">
             <i class="fa-solid fa-calendar-check text-2xl" style="color: #1F4088;"></i>
           </div>
-          <div class="font-semibold text-lg">1. Book online</div>
-          <p class="mt-2 text-sm text-[#475569]">Fill out the form in under 60 seconds. We’ll note your preferred time and get back to you during office hours.</p>
+          <div class="font-semibold text-lg" data-i18n="howStep1Title">1. Book online</div>
+          <p class="mt-2 text-sm text-[#475569]" data-i18n="howStep1Desc">Fill out the form in under 90 seconds. We’ll note your preferred time and get back to you during office hours.</p>
         </div>
         <div class="text-center px-4">
           <div class="mx-auto w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style="background-color: #F1F5F9;">
             <i class="fa-brands fa-whatsapp text-2xl" style="color: #1F4088;"></i>
           </div>
-          <div class="font-semibold text-lg">2. Confirmation during office hours</div>
-          <p class="mt-2 text-sm text-[#475569]">Our team will contact you via WhatsApp during office hours to confirm your booking and answer any questions.</p>
+          <div class="font-semibold text-lg" data-i18n="howStep2Title">2. Confirmation during office hours</div>
+          <p class="mt-2 text-sm text-[#475569]" data-i18n="howStep2Desc">Our team will contact you via WhatsApp during office hours to confirm your booking and answer any questions.</p>
         </div>
         <div class="text-center px-4">
           <div class="mx-auto w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style="background-color: #F1F5F9;">
             <i class="fa-solid fa-wind text-2xl" style="color: #1F4088;"></i>
           </div>
-          <div class="font-semibold text-lg">3. Breathe easy</div>
-          <p class="mt-2 text-sm text-[#475569]">Our trained technicians arrive on time, protect your home, and leave it cleaner than we found it.</p>
+          <div class="font-semibold text-lg" data-i18n="howStep3Title">3. Breathe easy</div>
+          <p class="mt-2 text-sm text-[#475569]" data-i18n="howStep3Desc">Our trained technicians arrive on time, protect your home, and leave it cleaner than we found it.</p>
         </div>
       </div>
     </div>
@@ -597,25 +619,25 @@
   <div id="guarantees" class="max-w-7xl mx-auto px-8 py-16">
     <div class="max-w-2xl mb-9">
       <div class="uppercase tracking-[1px] text-xs font-semibold text-[#1F4088]">OUR PROMISE TO YOU</div>
-      <h3 class="text-3xl font-semibold tracking-[-0.02em] mt-2">Peace of mind, every time.</h3>
+      <h3 class="text-3xl font-semibold tracking-[-0.02em] mt-2" data-i18n="guaranteeTitle">Peace of mind, every time.</h3>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
       <div class="bg-white rounded-3xl p-6 border border-[#E5E7EB]">
-        <div class="font-semibold text-lg leading-tight">Trained specialists only</div>
-        <p class="mt-3 text-sm text-[#475569]">Every technician completes our 3-month internal training. We don’t send apprentices to your home.</p>
+        <div class="font-semibold text-lg leading-tight" data-i18n="guarantee1Title">Trained specialists only</div>
+        <p class="mt-3 text-sm text-[#475569]" data-i18n="guarantee1Desc">Every technician completes our 3-month internal training. We don’t send apprentices to your home.</p>
       </div>
       <div class="bg-white rounded-3xl p-6 border border-[#E5E7EB]">
-        <div class="font-semibold text-lg leading-tight">Non-toxic cleaning agents</div>
-        <p class="mt-3 text-sm text-[#475569]">Safe for children, pets, and allergy sufferers. No harsh chemicals that linger in your space.</p>
+        <div class="font-semibold text-lg leading-tight" data-i18n="guarantee2Title">Non-toxic cleaning agents</div>
+        <p class="mt-3 text-sm text-[#475569]" data-i18n="guarantee2Desc">Safe for children, pets, and allergy sufferers. No harsh chemicals that linger in your space.</p>
       </div>
       <div class="bg-white rounded-3xl p-6 border border-[#E5E7EB]">
-        <div class="font-semibold text-lg leading-tight">Complete home protection</div>
-        <p class="mt-3 text-sm text-[#475569]">We cover floors and furniture before we begin. You’ll never find a drop of water or dirt after we leave.</p>
+        <div class="font-semibold text-lg leading-tight" data-i18n="guarantee3Title">Complete home protection</div>
+        <p class="mt-3 text-sm text-[#475569]" data-i18n="guarantee3Desc">We cover floors and furniture before we begin. You’ll never find a drop of water or dirt after we leave.</p>
       </div>
       <div class="bg-white rounded-3xl p-6 border border-[#E5E7EB]">
-        <div class="font-semibold text-lg leading-tight">Transparent &amp; fair pricing</div>
-        <p class="mt-3 text-sm text-[#475569]">What you see is what you pay. No hidden fees, ever. Payment only after the service is complete.</p>
+        <div class="font-semibold text-lg leading-tight" data-i18n="guarantee4Title">Transparent &amp; fair pricing</div>
+        <p class="mt-3 text-sm text-[#475569]" data-i18n="guarantee4Desc">What you see is what you pay. No hidden fees, ever. Payment only after the service is complete.</p>
       </div>
     </div>
   </div>
@@ -626,9 +648,9 @@
       <div class="flex items-end justify-between mb-8">
         <div>
           <div class="uppercase text-xs tracking-[1px] font-semibold text-[#1F4088]">REAL FEEDBACK</div>
-          <h3 class="text-3xl font-semibold tracking-tight mt-1">Families who breathe easier</h3>
+          <h3 class="text-3xl font-semibold tracking-tight mt-1" data-i18n="reviewsTitle">Families who breathe easier</h3>
         </div>
-        <a href="https://maps.app.goo.gl/..." target="_blank" class="hidden sm:block text-sm font-medium text-[#1F4088] hover:underline">Read all 460+ reviews →</a>
+        <a href="https://maps.app.goo.gl/..." target="_blank" class="hidden sm:block text-sm font-medium text-[#1F4088] hover:underline" data-i18n="reviewsLink">Read all 460+ reviews →</a>
       </div>
 
       <div class="grid md:grid-cols-3 gap-5">
@@ -672,8 +694,8 @@
       <div class="flex items-center gap-x-5">
         <div>© Breathe Easy HK 2025</div>
         <div class="hidden md:block">•</div>
-        <a href="#" class="hover:text-[#1F4088]">Privacy</a>
-        <a href="#" class="hover:text-[#1F4088]">Terms</a>
+        <a href="#" class="hover:text-[#1F4088]" data-i18n="footerPrivacy">Privacy</a>
+        <a href="#" class="hover:text-[#1F4088]" data-i18n="footerTerms">Terms</a>
       </div>
       
       <div class="flex items-center gap-x-6">
@@ -682,7 +704,7 @@
           <span>+852 9887 7273</span>
         </a>
         <div class="hidden md:block">•</div>
-        <div>Mon–Sun, 8am–9pm</div>
+        <div data-i18n="footerHours">Mon–Sun, 8am–9pm</div>
       </div>
     </div>
   </footer>
@@ -697,7 +719,7 @@
             <div class="inline-flex items-center justify-center w-11 h-11 rounded-2xl mb-4" style="background-color: #E6F4F9;">
               <i class="fa-solid fa-check text-xl" style="color: #1F4088;"></i>
             </div>
-            <div class="text-2xl font-semibold tracking-tight">Booking request received</div>
+            <div class="text-2xl font-semibold tracking-tight">Quote request received</div>
             <div class="text-[#475569] mt-1">Reference <span id="modal-ref" class="font-mono font-medium text-[#1F4088]"></span></div>
           </div>
           <button onclick="closeModal()" class="text-[#94A3B8] hover:text-[#64748B] text-xl leading-none">×</button>
@@ -748,6 +770,8 @@
     let discountRate = 0
     let discountAmount = 0
     let finalTotal = 0
+    let minimumCharge = 1200
+    let minimumApplied = false
 
     // Calculate totals + volume discount
     // Rule: Every $2000 → 5% off, max 15%
@@ -765,6 +789,13 @@
       discountRate = Math.min(Math.floor(subtotal / 2000) * 5, 15)
       discountAmount = Math.round(subtotal * (discountRate / 100))
       finalTotal = subtotal - discountAmount
+
+      // Minimum charge
+      minimumApplied = false
+      if (finalTotal < minimumCharge) {
+        finalTotal = minimumCharge
+        minimumApplied = true
+      }
     }
 
     // Change quantity for a specific type
@@ -808,6 +839,12 @@
       const districtVal = document.getElementById('district').value
       
       calculateTotals()
+
+      // Ensure minimum charge when no units selected
+      if (totalUnits === 0) {
+        finalTotal = minimumCharge
+        minimumApplied = true
+      }
 
       // (Units breakdown is now handled inside the detailed Cost Breakdown section)
       
@@ -882,16 +919,25 @@
         `
 
         if (discountRate > 0) {
-          // Calculate the threshold they hit for ultra simple messaging
-          const thresholdHit = discountRate / 5 * 2000;
-          
           totalsHTML += `
             <div class="flex justify-between text-emerald-600">
-              <span>Discount (−${discountRate}%)</span>
+              <span>Volume Discount (−${discountRate}%)</span>
               <span>−HK$ ${discountAmount.toLocaleString()}</span>
             </div>
-            <div class="text-[11px] text-emerald-600/80 -mt-0.5">
-              Because you spent over HK$${thresholdHit.toLocaleString()}
+            <div class="text-[11px] text-emerald-600 font-medium -mt-0.5">
+              You save HK$ ${discountAmount.toLocaleString()}
+            </div>
+          `
+        }
+
+        if (minimumApplied) {
+          totalsHTML += `
+            <div class="flex justify-between text-amber-600">
+              <span>Minimum charge (HK$1,200)</span>
+              <span>HK$ ${minimumCharge.toLocaleString()}</span>
+            </div>
+            <div class="text-[11px] text-amber-600/80 -mt-0.5">
+              Your selection is below the minimum charge
             </div>
           `
         }
@@ -906,9 +952,18 @@
         totalsContainer.innerHTML = totalsHTML
         document.getElementById('cost-breakdown').style.display = 'block'
       } else {
+        // When no units selected, still show the minimum charge clearly
         linesContainer.innerHTML = ''
-        totalsContainer.innerHTML = ''
-        document.getElementById('cost-breakdown').style.display = 'none'
+        totalsContainer.innerHTML = `
+          <div class="text-sm text-[#475569]">
+            Minimum charge applies
+          </div>
+          <div class="flex justify-between pt-2 mt-1 border-t border-[#E5E7EB] font-semibold text-base">
+            <span>Total to pay</span>
+            <span class="tabular-nums">HK$ ${minimumCharge.toLocaleString()}</span>
+          </div>
+        `
+        document.getElementById('cost-breakdown').style.display = 'block'
       }
     }
 
@@ -954,11 +1009,8 @@
         return
       }
       
-      // Show beautiful success modal
+      // Show success modal (WhatsApp flow)
       showSuccessModal(bookingData)
-      
-      // Optional: You can add an actual webhook here later
-      // Example: fetch('https://your-webhook.com', { method: 'POST', body: JSON.stringify(bookingData) })
     }
 
     function showSuccessModal(data) {
@@ -1147,8 +1199,252 @@
       console.log('%c[Breathe Easy] Premium booking page initialized successfully.', 'color:#94A3B8')
     }
     
+    // ==================== LANGUAGE SWITCHER ====================
+    const translations = {
+      en: {
+        // Header
+        navHow: "How it works",
+        navPromise: "Our promise",
+        navReviews: "Reviews",
+
+        // Hero
+        heroTitle: "Cleaner air.<br>Peace of mind.",
+        heroSubtitle: "Professional aircon cleaning that protects your home and the people in it.<br>Non-toxic. Thorough. Trusted by thousands of Hong Kong families.",
+        heroBadge: "Real reviews. Real results.",
+        heroCta: "Request a quote",
+        heroTrust: "Trusted by <span class=\"font-medium text-[#1F2937]\">thousands of families</span> across Hong Kong",
+
+        // Trust Bar
+        trustNonToxic: "Non-toxic & safe",
+        trustNonToxicSub: "Family & pet friendly",
+        trustZeroMess: "Zero mess guarantee",
+        trustZeroMessSub: "We leave your home spotless",
+        trustReviews: "460+ Google reviews",
+        trustReviewsSub: "Hong Kong’s most trusted",
+
+        // Booking Section
+        bookingTitle: "Request a quote",
+        bookingSubtitle1: "Takes less than 90 seconds.",
+        bookingSubtitle2: "Our team will contact you during office hours to help finalize and settle payment.",
+        bookingNote: "Current waiting time: approximately 2–3 weeks",
+
+        // Form
+        formUnitTitle: "Select your aircon types",
+        formUnitDesc: "Different unit types have different cleaning requirements and pricing.",
+
+        unitSplit: "Split Units",
+        unitSplitSub: "Wall-mounted (most common)",
+        unitWindow: "Window Units",
+        unitWindowSub: "Traditional window box type",
+        unitCassette: "Cassette Units",
+        unitCassetteSub: "Ceiling cassette (4-way)",
+        unitBuiltin: "Built-in / Ducted",
+        unitBuiltinSub: "Concealed ducted systems",
+        unitUnder: "Under-Ceiling",
+        unitUnderSub: "Exposed under-ceiling units",
+
+        formTimeTitle: "Preferred time window",
+        timeMorning: "Morning",
+        timeMorningSub: "9:00 – 12:00",
+        timeAfternoon: "Afternoon",
+        timeAfternoonSub: "12:00 – 15:00",
+        timeLate: "Late afternoon",
+        timeLateSub: "3.00pm – 5.30pm",
+
+        formDistrict: "District",
+        formName: "Full name",
+        formPhone: "WhatsApp number",
+        formNotes: "Anything we should know?",
+        formNotesPlaceholder: "e.g. 2 split units are very high up, dog at home...",
+        formSubmit: "Submit quote request",
+
+        whatNextTitle: "What happens next",
+        whatNext1: "We’ll contact you via WhatsApp during office hours (Mon–Fri, 8am–5:30pm) to confirm your booking and answer any questions.",
+        whatNext2: "A technician will arrive on the scheduled date, protect your home, and carry out a thorough clean.",
+        whatNext3: "Payment is due only after you’re satisfied. Includes 3 months of after-service coverage.",
+
+        // Cost Breakdown
+        costMin: "Minimum charge: HK$1,200",
+        costDiscount: "Additional 5% off every $2,000 (max 15%)",
+
+        // What's included
+        includedTitle: "What's included",
+        included1: "Deep chemical-free clean",
+        included2: "Filters, coils & drainage",
+        included3: "Anti-Microbial Protective Treatment",
+        included4: "3 months after-service coverage",
+
+        // How it works
+        howTitle: "How it works",
+        howStep1Title: "1. Submit request",
+        howStep1Desc: "Fill out the form in under 90 seconds. We’ll note your preferred time and get back to you during office hours.",
+        howStep2Title: "2. Confirmation during office hours",
+        howStep2Desc: "Our team will contact you via WhatsApp during office hours to confirm your booking and answer any questions.",
+        howStep3Title: "3. Breathe easy",
+        howStep3Desc: "Our trained technicians arrive on time, protect your home, and leave it cleaner than we found it.",
+
+        // Guarantees
+        guaranteeTitle: "Our promise to you",
+        guarantee1Title: "Trained specialists only",
+        guarantee1Desc: "Every technician completes our 3-month internal training. We don’t send apprentices to your home.",
+        guarantee2Title: "Non-toxic cleaning agents",
+        guarantee2Desc: "Safe for children, pets, and allergy sufferers. No harsh chemicals that linger in your space.",
+        guarantee3Title: "Complete home protection",
+        guarantee3Desc: "We cover floors and furniture before we begin. You’ll never find a drop of water or dirt after we leave.",
+        guarantee4Title: "Transparent & fair pricing",
+        guarantee4Desc: "What you see is what you pay. No hidden fees, ever. Payment only after the service is complete.",
+
+        // Reviews
+        reviewsTitle: "Families who breathe easier",
+        reviewsLink: "Read all 460+ reviews →",
+
+        // Footer
+        footerPrivacy: "Privacy",
+        footerTerms: "Terms",
+        footerHours: "Mon–Sun, 8am–9pm",
+      },
+      zh: {
+        // Header
+        navHow: "服務流程",
+        navPromise: "我們的承諾",
+        navReviews: "客戶評價",
+
+        // Hero
+        heroTitle: "潔淨空氣<br>安心守護",
+        heroSubtitle: "專業空調清洗，守護家居與家人健康。<br>無毒配方・徹底清潔・數千香港家庭信賴之選。",
+        heroBadge: "真實評價・真實成效",
+        heroCta: "索取報價",
+        heroTrust: "數千香港家庭<span class=\"font-medium text-[#1F2937]\">信賴之選</span>",
+
+        // Trust Bar
+        trustNonToxic: "安全無毒",
+        trustNonToxicSub: "適合家庭及寵物",
+        trustZeroMess: "零污染承諾",
+        trustZeroMessSub: "完工後家居一塵不染",
+        trustReviews: "460+ Google 評價",
+        trustReviewsSub: "香港最受信賴",
+
+        // Booking Section
+        bookingTitle: "索取報價",
+        bookingSubtitle1: "只需 90 秒完成。",
+        bookingSubtitle2: "我們會於辦公時間內聯絡你，協助確認及安排付款。",
+        bookingNote: "目前輪候時間：約 2–3 星期",
+
+        // Form
+        formUnitTitle: "選擇你的冷氣機類型",
+        formUnitDesc: "不同類型的冷氣機清潔要求及收費均有所不同。",
+
+        unitSplit: "分體式冷氣",
+        unitSplitSub: "掛牆式（最常見）",
+        unitWindow: "窗口式冷氣",
+        unitWindowSub: "傳統窗口機",
+        unitCassette: "卡式冷氣",
+        unitCassetteSub: "天花板嵌入式（四面出風）",
+        unitBuiltin: "隱藏式 / 風管機",
+        unitBuiltinSub: "隱藏式風管系統",
+        unitUnder: "吊頂式冷氣",
+        unitUnderSub: "天花板下懸掛式",
+
+        formTimeTitle: "選擇時段",
+        timeMorning: "上午",
+        timeMorningSub: "9:00 – 12:00",
+        timeAfternoon: "下午",
+        timeAfternoonSub: "12:00 – 15:00",
+        timeLate: "傍晚",
+        timeLateSub: "3:00pm – 5:30pm",
+
+        formDistrict: "地區",
+        formName: "姓名",
+        formPhone: "WhatsApp 電話",
+        formNotes: "有其他需要告知我們的事項嗎？",
+        formNotesPlaceholder: "例如：有兩台分體機位置較高、屋內有寵物等...",
+        formSubmit: "提交報價申請",
+
+        whatNextTitle: "下一步流程",
+        whatNext1: "我們會於辦公時間（星期一至五上午8時至下午5時30分）透過 WhatsApp 聯絡你，確認預約及解答疑問。",
+        whatNext2: "技師會準時到達，保護家居後進行徹底清潔。",
+        whatNext3: "你滿意後才需付款，並享有 3 個月售後保養。",
+
+        // Cost Breakdown
+        costMin: "最低收費：HK$1,200",
+        costDiscount: "每滿 $2,000 額外減 5%（最多減 15%）",
+
+        // What's included
+        includedTitle: "服務包括",
+        included1: "無毒深層清潔",
+        included2: "濾網、蒸發器及排水系統清潔",
+        included3: "抗菌保護處理",
+        included4: "3 個月售後保養",
+
+        // How it works
+        howTitle: "服務流程",
+        howStep1Title: "1. 提交申請",
+        howStep1Desc: "90 秒完成表格，我們會記錄你心儀的時段，並於辦公時間內回覆。",
+        howStep2Title: "2. 辦公時間確認",
+        howStep2Desc: "我們會於辦公時間透過 WhatsApp 聯絡你，確認預約詳情及解答疑問。",
+        howStep3Title: "3. 安心享受",
+        howStep3Desc: "專業技師準時到達，保護家居後進行徹底清潔。",
+
+        // Guarantees
+        guaranteeTitle: "我們的承諾",
+        guarantee1Title: "專業培訓技師",
+        guarantee1Desc: "每位技師均完成我們 3 個月內部培訓，絕不派出未經充分訓練的人員。",
+        guarantee2Title: "安全無毒清潔劑",
+        guarantee2Desc: "適合兒童、寵物及過敏人士使用，不會殘留有害化學物質。",
+        guarantee3Title: "家居全面保護",
+        guarantee3Desc: "施工前會妥善保護地板及傢俱，完工後確保一塵不染。",
+        guarantee4Title: "透明公平收費",
+        guarantee4Desc: "明碼實價，絕無隱藏收費。服務完成後才需付款。",
+
+        // Reviews
+        reviewsTitle: "安心呼吸的家庭",
+        reviewsLink: "查看全部 460+ 評價 →",
+
+        // Footer
+        footerPrivacy: "私隱政策",
+        footerTerms: "服務條款",
+        footerHours: "星期一至日 上午8時至晚上9時",
+      }
+    };
+
+    let currentLang = 'en';
+
+    function switchLanguage(lang) {
+      currentLang = lang;
+      
+      // Update active button
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+
+      const t = translations[lang];
+
+      // Update all elements with data-i18n
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) {
+          el.innerHTML = t[key];
+        }
+      });
+
+      // Save preference
+      localStorage.setItem('preferredLang', lang);
+    }
+
+    function loadLanguagePreference() {
+      const savedLang = localStorage.getItem('preferredLang') || 'en';
+      
+      // Set initial active button
+      document.getElementById('lang-en').classList.toggle('active', savedLang === 'en');
+      document.getElementById('lang-zh').classList.toggle('active', savedLang === 'zh');
+      
+      switchLanguage(savedLang);
+    }
+
     // Boot
-    window.onload = init
+    window.onload = function() {
+      init();
+      loadLanguagePreference();
+    }
   </script>
 </body>
 </html>
