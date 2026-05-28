@@ -80,11 +80,13 @@ Project context:
 - We have removed all fake urgency and unrealistic promises
 
 Current state:
-- Detailed unit type selector with per-unit pricing and volume discounts
+- Detailed unit type selector (Split, Window, Cassette, Built-in, Under-Ceiling) with per-unit pricing and volume discounts (5% per $2,000, max 15%)
 - District selector covering all of Hong Kong
-- No preferred date field (flexible)
-- No full address field
-- Strong emphasis on honest communication
+- No preferred date field (always "Flexible")
+- No full address field (collected later via WhatsApp)
+- Strong emphasis on honest communication (2–3 week lead times, office hours only: Mon–Fri 8am–5:30pm)
+- On mobile: A compact, sticky "Your Quote" summary block appears directly after the unit quantity selectors. It shows live total + selected units + discount/minimum notes and stays in view while the user is choosing quantities. The full detailed summary card remains for later in the form.
+- Desktop uses the original two-column sticky summary layout.
 
 Please read the current index.html and CONTEXT.md first. Once you understand the project, confirm you have the context and ask what I want to work on.
 ```
@@ -146,4 +148,4 @@ Write a [follow-up / confirmation / marketing / re-engagement] email for the abo
 - When in doubt, prioritize clarity and professionalism over conversion tricks.
 
 ---
-Last updated: May 2025 (added strong email writing prompt)
+Last updated: May 2025 (updated Master Context Prompt with latest mobile quote block)
